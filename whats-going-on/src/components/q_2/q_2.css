@@ -1,0 +1,130 @@
+.app-container {
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+    text-align: center;
+    background-color: #E9E9E9;
+  }
+  
+  .heading h6 {
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .heading svg {
+    margin-right: 10px;
+  }
+  
+  .content {
+    width: 80%;
+    max-width: 650px;
+    position: relative;
+  }
+
+  .button-grid-detail{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 14px;
+    margin-top: 80px;
+  }
+  
+  .button-grid-4 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 14px;
+    margin-top: 80px;
+  }
+
+  .button-grid-6 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 14px;
+    margin-top: 80px;
+  }
+
+  .button-grid-news {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+    margin-top: 50px;
+  }
+  
+  .topic-button {
+    padding: 17px;
+    font-size: 18px;
+    cursor: pointer;
+    border: 1px solid #000000;
+    border-radius: 10px;
+    font-weight: bold;
+    background-color: white;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .topic-button-detail {
+    padding-top: 17px;
+    font-size: 18px;
+    cursor: pointer;
+    border: 1px solid #000000;
+    border-radius: 10px;
+    font-weight: bold;
+    background-color: white;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .separator {
+    height: 1px;
+    width: 105%;
+    background-color: black;
+    margin-top: 10px;
+  }
+
+  .detail {
+    background-color: #f0f0f0;
+    width: 104%;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin-left: -6px;
+    margin-right: -6px;
+    border-radius: 0px 0px 10px 10px;
+  }
+  
+  .bar {
+    display: flex;
+    width: 80%;
+    margin: 110px auto 0;
+    height: 8px;
+    border-radius: 10px;
+    background-color: #CCCCCC;
+  }
+  
+  .next-button {
+    top: 260px;
+    right: 00px;
+    position: absolute;
+    font-size: 40px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    background-color: transparent;
+    color: #CCCCCC;
+  }
+
+  .prev-button {
+    top: 260px;
+    left: 00px;
+    position: absolute;
+    font-size: 40px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    background-color: transparent;
+    color: #CCCCCC;
+  }

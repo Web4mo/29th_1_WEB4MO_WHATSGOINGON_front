@@ -1,0 +1,79 @@
+.cal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #E9E9E9;
+}
+
+.calendar-controls {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 800px;
+  margin: 10px 0;
+}
+
+.calendar-grid-day {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  width: 100%;
+  max-width: 800px;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 10px;
+  width: 100%;
+  max-width: 800px;
+  margin-bottom: 200px;
+}
+
+.day-of-week {
+  width: 100%;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.day, .empty-day {
+  width: 100%;
+  height: 100px;
+  display: flex;
+  padding: 5px;
+  margin-bottom: -11px;
+  background-color: #fff;
+  border: 1px solid black;
+  position: relative;
+}
+
+.marked-day {
+  background-color: #e9e9e9;
+}
+
+.today {
+  background-color: #e9e9e9;
+}
+
+.icon {
+  position: absolute;
+  bottom: 3px;
+  left: 5px;
+  width: 40px;
+  height: 40px;
+}
+
+.cal-button {
+  background-color: #e9e9e9;
+  margin-left: 15px;
+  margin-top: 30px;
+  border: none;
+  height: 40px;
+  padding: 10px;
+  cursor: pointer;
+}
+
+h1, h6 {
+  margin: 10px 0;
+}

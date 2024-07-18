@@ -1,0 +1,78 @@
+.app-container {
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+    text-align: center;
+    background-color: #E9E9E9;
+  }
+  
+  .heading {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    top: -10px;
+    left: 20px;
+    font-size: 24px;
+  }
+  
+  .heading h6 {
+    display: flex;
+    align-items: center;
+  }
+  
+  .heading svg {
+    margin-right: 10px;
+  }
+  
+  .button-grid {
+    margin-top: 80px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+  
+  .topic-button {
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .topic-button.selected {
+    background-color: #e9e9e9;
+  }
+  
+  .button-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }  
+  
+  .button-content img {
+    width: 24px;
+    height: 24px;
+  }
+  
+  .bar {
+    display: flex;
+    width: 80%;
+    margin: 110px auto 0;
+    height: 8px;
+    border-radius: 10px;
+    background-color: #CCCCCC;
+  }
+  
+  .next-button {
+    top: 260px;
+    right: 00px;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  .selected {
+    background-color: #e9e9e9;
+  }
