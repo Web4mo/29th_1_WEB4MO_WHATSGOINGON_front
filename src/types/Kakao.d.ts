@@ -1,37 +1,35 @@
 export interface Kakao {
-    init: (key: string) => void;
-    isInitialized: () => boolean;
-    Share: {
-      createDefaultButton: (options: {
-        container: string;
-        objectType: string;
-        content: {
-          title: string;
-          description: string;
-          imageUrl: string;
-          link: {
-            webUrl: string;
-          };
+  init: (key: string) => void;
+  isInitialized: () => boolean;
+  Share: {
+    createDefaultButton: (options: {
+      container: string;
+      objectType: string;
+      content: {
+        title: string;
+        description: string;
+        imageUrl: string;
+        link: {
+          webUrl: string;
         };
-        social: {
-          likeCount: number;
-          commentCount: number;
-          sharedCount: number;
+      };
+      social: {
+        likeCount: number;
+        commentCount: number;
+        sharedCount: number;
+      };
+      buttons: {
+        title: string;
+        link: {
+          webUrl: string;
         };
-        buttons: {
-          title: string;
-          link: {
-            webUrl: string;
-          };
-        }[];
-      }) => void;
-    };
+      }[];
+    }) => void;
+  };
+}
+
+declare global {
+  interface Window {
+    Kakao: Kakao;
   }
-  
-  declare global {
-    interface Window {
-      Kakao: Kakao;
-    }
-  }
-  
-  
+}
