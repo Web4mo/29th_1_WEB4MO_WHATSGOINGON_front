@@ -52,7 +52,7 @@ const ProfileUpload: React.FC = () => {
         />
         <Camera
           onClick={() => document.getElementById('fileInput')?.click()}
-          style={{ marginLeft: '-60px' }}
+          style={{ marginLeft: '-60px', cursor: 'pointer' }}
         />
       </div>
     </div>

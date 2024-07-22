@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './Profile.css';
 import ProfileUpload from 'components/profileUpload';
-import PopUp from 'components/popup';
+import EditInfo from 'components/editInfo';
 import { Logout, Home, Rectangle } from 'assets';
 import { Info, Calendar, Scrap } from 'assets';
 import { Modify, Retest2 } from 'assets';
@@ -15,6 +16,15 @@ function Profile(): JSX.Element {
 
   const closeModal = () => {
     setModalIsOpen(false);
+  };
+
+  // const gotoHome = () => {
+  //   const navigate = useNavigate();
+  //   navigate('/main');
+  // };
+  const gotoRetest = () => {
+    const navigate = useNavigate();
+    navigate('/analy');
   };
 
   return (
@@ -52,9 +62,9 @@ function Profile(): JSX.Element {
           marginLeft: '47vw',
         }}
       >
-        <Modify onClick={openModal} style={{ cursor: 'pointer' }} />
-        <Retest2 className="rete" />
-        <PopUp isOpen={modalIsOpen} onRequestClose={closeModal} />
+        <Modify onClick={openModal} />
+        <Retest2 className="rete" onClick={gotoRetest} />
+        <EditInfo isOpen={modalIsOpen} onRequestClose={closeModal} />
       </div>
     </div>
   );
