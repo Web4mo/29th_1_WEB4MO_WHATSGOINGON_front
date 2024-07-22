@@ -20,22 +20,22 @@ const Q_2_6: React.FC = () => {
   };
 
   return (
-    <div className="app-container">
-      <div className="heading">
+    <div className="q2-app-container">
+      <div className="q2-heading">
         <h6>
           <img src={WGO} alt="WGO" />&nbsp;What's going on
         </h6>
       </div>
-      <div className="content">
+      <div className="q2-content">
         <h5>관심 분야 테스트</h5>
-        <div className="bar"></div>
+        <div className="q2-bar"></div>
         <h1>Q. 2</h1>
         <h3>스포츠 분야를 선택하셨네요!<br></br>더 관심 있는 키워드가 있을까요?</h3>    
-        <button className="prev-button">&lt;</button> 
-        <button className="next-button">&gt;</button>
-        <div className="button-grid-6">
+        <button className="q2-prev-button">&lt;</button> 
+        <button className="q2-next-button">&gt;</button>
+        <div className="q2-button-grid-6">
           {topics.map((topic, index) => (
-            <button key={index} className="topic-button" onClick={() => handleClick(topic.path)}>
+            <button key={index} className="q2-topic-button" onClick={() => handleClick(topic.path)}>
               {topic.name}
             </button>
           ))}

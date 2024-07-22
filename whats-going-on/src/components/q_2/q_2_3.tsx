@@ -18,25 +18,25 @@ const Q_2_3: React.FC = () => {
   };
 
   return (
-    <div className="app-container">
-      <div className="heading">
+    <div className="q2-app-container">
+      <div className="q2-heading">
       <h6>
           <img src={WGO} alt="WGO" />&nbsp;What's going on
         </h6>
       </div>
-      <div className="content">
+      <div className="q2-content">
         <h5>관심 분야 테스트</h5>
-        <div className="bar"></div>
+        <div className="q2-bar"></div>
         <h1>Q. 2</h1>
         <h3>IT/과학 분야를 선택하셨네요!<br></br>더 관심 있는 키워드가 있을까요?</h3>    
-        <button className="prev-button">&lt;</button>  
-        <button className="next-button">&gt;</button>
-        <div className="button-grid-detail">
+        <button className="q2-prev-button">&lt;</button>  
+        <button className="q2-next-button">&gt;</button>
+        <div className="q2-button-grid-detail">
           {topics.map((topic, index) => (
-            <button key={index} className="topic-button-detail" onClick={() => handleClick(topic.path)}>
-              <div className="name">{topic.name}</div>
-              <div className="separator"></div>
-              <div className="detail">
+            <button key={index} className="q2-topic-button-detail" onClick={() => handleClick(topic.path)}>
+              <div className="q2-name">{topic.name}</div>
+              <div className="q2-separator"></div>
+              <div className="q2-detail">
                 {topic.detail.split('\n').map((line, i) => (
                   <React.Fragment key={i}>
                     {line}

@@ -47,26 +47,26 @@ const Q1: React.FC = () => {
   };
 
   return (
-    <div className="app-container">
-      <div className="heading">
+    <div className="q1-app-container">
+      <div className="q1-heading">
         <h6>
           <img src={WGO} alt="WGO" />&nbsp;What's going on
         </h6>
       </div>
-      <div className="content">
+      <div className="q1-content">
         <h5>관심 분야 테스트</h5>
-        <div className="bar"></div>
+        <div className="q1-bar"></div>
         <h1>Q. 1</h1>
         <h3>관심있는 분야를 선택해 주세요! (2-4개)</h3>
-        <button className="next-button" onClick={handleNextClick}>&gt;</button>
-        <div className="button-grid">
+        <button className="q1-next-button" onClick={handleNextClick}>&gt;</button>
+        <div className="q1-button-grid">
           {topics.map((topic, index) => (
             <button
               key={index}
-              className={`topic-button ${selectedTopics.some(t => t.num === topic.num) ? 'selected' : ''}`}
+              className={`q1-topic-button ${selectedTopics.some(t => t.num === topic.num) ? 'selected' : ''}`}
               onClick={() => handleTopicClick(topic)}
             >
-              <div className="button-content">
+              <div className="q1-button-content">
                 <img src={topic.icon} alt={`${topic.name} icon`} />
                 <span>{topic.name}</span>
               </div>

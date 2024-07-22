@@ -53,7 +53,7 @@ const CAL: React.FC = () => {
       days.push(
         <div key={day} className={`day ${isMarked ? 'marked-day' : ''} ${isToday ? 'today' : ''}`}>
           {day}
-          {(isMarked || isToday) && <img src={isMarked ? book2Icon : bookIcon} alt="book" className="icon" />}
+          {(isMarked || isToday) && <img src={isMarked ? book2Icon : bookIcon} alt="book" className="cal-icon" />}
         </div>
       );
     }
@@ -89,12 +89,12 @@ const CAL: React.FC = () => {
 
   return (
     <div className="cal">
-      <h1>Today</h1>
-      <h6>{formatDate(currentDate)}</h6>
+      <h1 className="cal-heading1">Today</h1>
+      <h6 className="cal-heading6">{formatDate(currentDate)}</h6>
       <button onClick={handleMarkToday}>읽었어요</button>
       <div className="calendar-controls">
         <button onClick={handlePrevMonth} className="cal-button">&lt; 이전 달 보기</button>
-        <h1>{months[currentDate.getMonth()]}</h1>
+        <h1 className="cal-heading1">{months[currentDate.getMonth()]}</h1>
         <button onClick={handleNextMonth} className="cal-button">다음 달 보기 &gt;</button>
       </div>
       <div className="calendar-grid-day">

@@ -1,12 +1,37 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import './q_2.css';
+import './q_3.css';
 import WGO from '../../assets/icons/whats_going_on.svg';
 
-const Q_3: React.FC = () => {
-  const navigate = useNavigate();
+const newsIcons = [
+    require('../../assets/icons/news/news_0.svg').default,
+    require('../../assets/icons/news/news_1.svg').default,
+    require('../../assets/icons/news/news_2.svg').default,
+    require('../../assets/icons/news/news_3.svg').default,
+    require('../../assets/icons/news/news_4.svg').default,
+    require('../../assets/icons/news/news_5.svg').default,
+    require('../../assets/icons/news/news_6.svg').default,
+    require('../../assets/icons/news/news_7.svg').default,
+    require('../../assets/icons/news/news_8.svg').default,
+    require('../../assets/icons/news/news_9.svg').default,
+    require('../../assets/icons/news/news_10.svg').default,
+    require('../../assets/icons/news/news_11.svg').default,
+    require('../../assets/icons/news/news_12.svg').default,
+    require('../../assets/icons/news/news_13.svg').default,
+    require('../../assets/icons/news/news_14.svg').default,
+    require('../../assets/icons/news/news_15.svg').default,
+    require('../../assets/icons/news/news_16.svg').default,
+    require('../../assets/icons/news/news_17.svg').default,
+    require('../../assets/icons/news/news_18.svg').default,
+    require('../../assets/icons/news/news_19.svg').default,
+    require('../../assets/icons/news/news_20.svg').default,
+    require('../../assets/icons/news/news_21.svg').default,
+    require('../../assets/icons/news/news_22.svg').default,
+    require('../../assets/icons/news/news_23.svg').default,
+    require('../../assets/icons/news/news_24.svg').default
+];
 
-  const topics = [
+const topics = [
     { name: '경향신문', path: '/cal/calendar' },
     { name: '국민일보', path: '/q_2/test_result' },
     { name: '내일신문', path: '/q_2/test_result' },
@@ -32,30 +57,33 @@ const Q_3: React.FC = () => {
     { name: '강원일보', path: '/q_2/test_result' },
     { name: '경기일보', path: '/q_2/test_result' },
     { name: '경남도민일보', path: '/q_2/test_result' }
-  ];  
+];
+
+const Q_3: React.FC = () => {
+  const navigate = useNavigate();
 
   const handleClick = (path: string) => {
     navigate(path);
   };
 
   return (
-    <div className="app-container">
-      <div className="heading">
+    <div className="q3-app-container">
+      <div className="q3-heading">
         <h6>
           <img src={WGO} alt="WGO" />&nbsp;What's going on
         </h6>
       </div>
-      <div className="content">
+      <div className="q3-content">
         <h5>관심 분야 테스트</h5>
-        <div className="bar"></div>
+        <div className="q3-bar"></div>
         <h1>Q. 3</h1>
         <h3>관심 있는 뉴스사를 골라주세요.</h3>    
-        <button className="prev-button">&lt;</button> 
-        <button className="next-button">&gt;</button>
-        <div className="button-grid-news">
+        <button className="q3-prev-button">&lt;</button> 
+        <button className="q3-next-button">&gt;</button>
+        <div className="q3-button-grid-news">
           {topics.map((topic, index) => (
-            <button key={index} className="topic-button" onClick={() => handleClick(topic.path)}>
-              {topic.name}
+            <button key={index} className="q3-topic-button" onClick={() => handleClick(topic.path)}>
+              <img src={newsIcons[index]} alt={topic.name} className="q3-news-icon" />
             </button>
           ))}
         </div>
