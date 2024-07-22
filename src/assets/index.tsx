@@ -48,3 +48,4 @@ export { ReactComponent as Camera } from './icons/camera.svg';
 export { ReactComponent as Password } from './icons/password.svg';
 export { ReactComponent as Save } from './icons/save.svg';
 export { ReactComponent as More } from './icons/viewmore.svg';
+export { ReactComponent as Line } from './icons/line.svg';

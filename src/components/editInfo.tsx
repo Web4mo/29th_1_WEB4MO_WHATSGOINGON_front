@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Modal from 'react-modal';
 import { Password, Save, More } from 'assets';
+import PasswordResetModal from './password';
 
 const customStyles = {
   content: {
@@ -84,6 +85,7 @@ const EditInfo: React.FC<PopUpProps> = ({ isOpen, onRequestClose }) => {
   const [errorMessage, setErrorMessage] = useState<string>(''); // 에러 메시지
   const [showMoreMediaOptions, setShowMoreMediaOptions] =
     useState<boolean>(false); // 추가 언론사 옵션 표시 여부
+  const [isPasswordModalOpen, setPasswordModalOpen] = useState<boolean>(false); // 비밀번호 재설정 모달 열림 상태
 
   useEffect(() => {
     if (isOpen) {
@@ -219,7 +221,7 @@ const EditInfo: React.FC<PopUpProps> = ({ isOpen, onRequestClose }) => {
       }
     }
 
-    setErrorMessage(''); // Clear error message
+    setErrorMessage(''); // error message
     onRequestClose(); // Close modal
   };
 
@@ -318,10 +320,17 @@ const EditInfo: React.FC<PopUpProps> = ({ isOpen, onRequestClose }) => {
           </div>
         )}
         <div style={{ marginLeft: '600px' }}>
-          <Password style={{ width: '150px', marginRight: '30px' }} />
+          <Password
+            style={{ width: '150px', marginRight: '30px' }}
+            onClick={() => setPasswordModalOpen(true)} // Password 아이콘 클릭 시 모달 열기
+          />
           <Save style={{ width: '150px' }} onClick={handleSave} />
         </div>
       </form>
+      <PasswordResetModal
+        isOpen={isPasswordModalOpen}
+        onRequestClose={() => setPasswordModalOpen(false)}
+      />
     </Modal>
   );
 };
