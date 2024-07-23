@@ -74,20 +74,23 @@ const Q_3: React.FC = () => {
         </h6>
       </div>
       <div className="q3-content">
-        <h5>관심 분야 테스트</h5>
+        <h5>관심 언론사 선택하기</h5>
         <div className="q3-bar"></div>
         <h1>Q. 3</h1>
-        <h3>관심 있는 뉴스사를 골라주세요.</h3>    
+        <h3>관심 있는 뉴스사를 골라주세요! (1-3개)</h3>    
+        <p>언론사 선택은 선택 사항이며, 원하지 않으실 경우 이 단계를 건너뛰실 수 있습니다.</p>
         <button className="q3-prev-button">&lt;</button> 
         <button className="q3-next-button">&gt;</button>
-        <div className="q3-button-grid-news">
-          {topics.map((topic, index) => (
-            <button key={index} className="q3-topic-button" onClick={() => handleClick(topic.path)}>
-              <img src={newsIcons[index]} alt={topic.name} className="q3-news-icon" />
-            </button>
-          ))}
-        </div>
       </div>
+        <div className="q3-content-button">
+          <div className="q3-button-grid-news">
+            {topics.map((topic, index) => (
+              <button key={index} className="q3-news-button" onClick={() => handleClick(topic.path)}>
+                <img src={newsIcons[index]} alt={topic.name} className="q3-news-icon" />
+              </button>
+           ))}
+         </div>
+    </div>
     </div>
   );
 };

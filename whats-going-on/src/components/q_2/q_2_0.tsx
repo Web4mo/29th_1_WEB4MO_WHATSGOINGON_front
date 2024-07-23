@@ -9,7 +9,7 @@ const Q_2_0: React.FC = () => {
   const topics = [
     { name: '국회.정당', detail: 'OO당 연급개혁 주장하며\n민생 주도권 잡나', path: '/q_2/q_3' },
     { name: '북한', detail: '北, GPS교란 - 미사일 발사... \n물풍선 이어 연쇄 도발', path: '/q_2/q_3' },
-    { name: '국방.외교', detail: '한일중FTA 협상시기 미정,\n?.. "방법론부터 협의"', path: '/q_2/q_3' },
+    { name: '국방.외교', detail: '한일중FTA 협상시기 미정,\n왜?.. "방법론부터 협의"', path: '/q_2/q_3' },
     { name: '행정', detail: '내달 3일 광주시,\n환경 보호 사업 도입 예정', path: '/q_2/q_3' }
   ];
 
@@ -18,7 +18,7 @@ const Q_2_0: React.FC = () => {
   };
 
   const handlePrev = () => {
-    navigate('/q_1');
+    navigate('/');
   };
 
   const handleNext = () => {
@@ -39,6 +39,8 @@ const Q_2_0: React.FC = () => {
         <h3>정치 분야를 선택하셨네요!<br></br>더 관심 있는 키워드가 있을까요?</h3>    
         <button className="q2-prev-button" onClick={handlePrev}>&lt;</button>  
         <button className="q2-next-button" onClick={handleNext}>&gt;</button>
+        </div>
+        <div className="q2-content-button">
         <div className="q2-button-grid-detail">
           {topics.map((topic, index) => (
             <button key={index} className="q2-topic-button-detail" onClick={() => handleClick(topic.path)}>
@@ -55,7 +57,7 @@ const Q_2_0: React.FC = () => {
             </button>
           ))}
         </div>
-      </div>
+        </div>
     </div>
   );
 };
