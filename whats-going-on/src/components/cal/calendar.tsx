@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import './calendar.css';
+import { useNavigate } from 'react-router-dom';
 import bookIcon from '../../assets/icons/book.svg';
 import book2Icon from '../../assets/icons/book_2.svg';
 
 const CAL: React.FC = () => {
+  const navigate = useNavigate();
   const [currentDate, setCurrentDate] = useState(new Date());
   const [markedDate, setMarkedDate] = useState<Date | null>(null);
 
@@ -89,13 +91,22 @@ const CAL: React.FC = () => {
 
   return (
     <div className="cal">
-      <h1 className="cal-heading1">Today</h1>
-      <h6 className="cal-heading6">{formatDate(currentDate)}</h6>
-      <button onClick={handleMarkToday}>읽었어요</button>
+      <div className="right">
+        <div className="button-container">
+          <button className="cal-logout-button" onClick={() => navigate('/logout')}>Log Out</button>
+          <button className="cal-home-button" onClick={() => navigate('/main')}>Home</button>
+      </div></div>
+      <div className="left">
+        <div className="cal-today-button">
+          <h1 className="cal-heading1">Today</h1>
+        <button onClick={handleMarkToday}>읽었어요!</button></div>
+      <p className="cal-heading6">{formatDate(currentDate)}</p>
+      </div>
+      <div className="center">
       <div className="calendar-controls">
-        <button onClick={handlePrevMonth} className="cal-button">&lt; 이전 달 보기</button>
+        <button onClick={handlePrevMonth} className="cal-button"><p>&lt; 이전 달 보기</p></button>
         <h1 className="cal-heading1">{months[currentDate.getMonth()]}</h1>
-        <button onClick={handleNextMonth} className="cal-button">다음 달 보기 &gt;</button>
+        <button onClick={handleNextMonth} className="cal-button"><p>다음 달 보기 &gt;</p></button>
       </div>
       <div className="calendar-grid-day">
         {daysOfWeek.map((day, index) => (
@@ -105,7 +116,7 @@ const CAL: React.FC = () => {
       <div className="calendar-grid">
         {generateCalendar(currentDate)}
       </div>
-    </div>
+    </div></div>
   );
 };
 
