@@ -20,7 +20,7 @@ const Q_2_0: React.FC = () => {
         navigate(currentPath);
       }
     }
-  }, [location, navigate]);
+  }, [location.state, navigate]);
 
   const topics = [
     { name: '국회.정당', detail: 'OO당 연급개혁 주장하며\n민생 주도권 잡나', path: '/q_2/q_3' },
@@ -34,7 +34,12 @@ const Q_2_0: React.FC = () => {
   };
 
   const handlePrev = () => {
-    navigate(location.state?.paths[location.state?.index - 1] || '/');
+    const prevIndex = (location.state?.index || 0) - 1;
+    if (prevIndex >= 0) {
+      navigate(location.state.paths[prevIndex], { state: { paths: location.state.paths, index: prevIndex } });
+    } else {
+      navigate('/');
+    }
   };
 
   const handleNext = () => {

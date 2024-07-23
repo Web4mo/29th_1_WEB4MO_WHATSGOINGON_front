@@ -61,10 +61,7 @@ const topics = [
 
 const Q_3: React.FC = () => {
   const navigate = useNavigate();
-  const [selectedTopics, setSelectedTopics] = useState<string[]>(() => {
-    const savedTopics = localStorage.getItem('selectedTopics');
-    return savedTopics ? JSON.parse(savedTopics) : [];
-  });
+  const [selectedTopics, setSelectedTopics] = useState<string[]>([]);
 
   const handleButtonClick = (topicName: string) => {
     setSelectedTopics(prevSelected => {
@@ -73,25 +70,25 @@ const Q_3: React.FC = () => {
         ? prevSelected.filter(name => name !== topicName)
         : [...prevSelected, topicName];
 
-      // 4개 이상 선택된 경우 안내 메시지
       if (updatedSelected.length > 3) {
         alert('최대 3개까지 선택할 수 있습니다.');
         return prevSelected; // 상태 변경 없음
       }
 
-      // 로컬 스토리지에 저장
-      localStorage.setItem('selectedTopics', JSON.stringify(updatedSelected));
-      
       return updatedSelected;
     });
   };
 
   const handleNext = () => {
-    navigate('/nextpage');
+    if (selectedTopics.length === 0) {
+      navigate('/resulteunyoung');
+    } else {
+      navigate('/resulteunyoung');
+    }
   };
 
   const handlePrev = () => {
-    navigate('/');
+    navigate(-1);
   };
 
   return (

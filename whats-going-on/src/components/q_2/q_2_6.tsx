@@ -7,7 +7,6 @@ const Q_2_6: React.FC = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  // 관리할 상태
   const [selectedTopics, setSelectedTopics] = useState<string[]>(() => {
     const savedTopics = localStorage.getItem('selectedTopics');
     return savedTopics ? JSON.parse(savedTopics) : [];
@@ -29,14 +28,19 @@ const Q_2_6: React.FC = () => {
     if (paths.length > 0 && paths[currentIndex] !== '/q_2/q_2_6') {
       navigate(paths[currentIndex]);
     }
-  }, [location, navigate]);
+  }, [location.state, navigate]);
 
   const handleClick = (path: string) => {
     navigate(path);
   };
 
   const handlePrev = () => {
-    navigate(location.state?.paths[location.state?.index - 1] || '/');
+    const prevIndex = (location.state?.index || 0) - 1;
+    if (prevIndex >= 0) {
+      navigate(location.state.paths[prevIndex], { state: { paths: location.state.paths, index: prevIndex } });
+    } else {
+      navigate('/');
+    }
   };
 
   const handleNext = () => {
