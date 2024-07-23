@@ -84,6 +84,7 @@
     display: flex;
     width: 100%;
     gap: 20px;
+    margin-top: -70px;
 }
 
 .main-left-box {
@@ -96,10 +97,10 @@
 }
 
 .main-right-box {
-    flex: 4.5;
+    flex: 3.8;
     display: flex;
     flex-direction: column;
-    margin-top: 70px;
+    margin-top: 80px;
     margin-left: 15px;
 }
 
@@ -138,8 +139,8 @@
     background-repeat: no-repeat;
     border: none;
     cursor: pointer;
-    padding: 25px;
-    font-weight: bold;
+    padding: 22px;
+    font-weight: 600;
     display: flex;
     font-size: 16px;
     background-color: rgba(255, 255, 255, 0);
@@ -160,7 +161,7 @@
     margin-bottom: 10px;
     border-top: 1.5px solid black;
     border-bottom: 1.5px solid black;
-    padding-top: 5px;
+    padding-top: px;
     padding-bottom: 5px;
     text-align: left;
     margin-top: 50px;
@@ -194,8 +195,15 @@
     justify-content: space-between;
     align-items: center;
     font-size: 14px;
-    margin-top: -12px;
-    margin-bottom: 40px;
+    margin-top: 0px;
+    margin-bottom: 50px;
+}
+
+.main-pencil-icon-left {
+    width: 20px;
+    height: 20px;
+    margin-right: 60px;
+    cursor: pointer;
 }
 
 .main-pencil-icon {
@@ -223,21 +231,19 @@
 
 .main-news-button {
     border-radius: 5px;
-    padding: 10px 25px;
+    padding: 5px 17px;
     cursor: pointer;
     border: none;
     background-color: white;
     color: black;
     margin-bottom: 30px;
-    margin-right: 5px;
-    width: 150px;
-    height: 45px;
+    width: 110px;
+    height: 35px;
     display: flex;
     justify-content: center;
     align-items: center;
-    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
 }
-
 
 .main-news-icon {
     max-width: 90%;
@@ -248,8 +254,25 @@
 
 .main-HAD {
     text-align: left;
-    font-weight: bold;
+    font-weight: 600;
     margin-top: 0px;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
     margin-left: 70px;
+}
+
+.main-question-icon {
+    margin-right: 10px;
+}
+
+.main-table-text-container {
+    display: flex;
+    align-items: center;
+}
+
+.main-table-text {
+    font-weight: bold;
+    font-size: 17px;
+    margin: 0;
+    line-height: 1.5;
+    margin-top: 5px;
 }

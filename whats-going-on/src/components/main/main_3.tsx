@@ -57,7 +57,7 @@ const MAIN_3: React.FC = () => {
                 <div className="main-content-container">
                     <div className="main-left-box">
                         <p className="main-left-text-main">안녕하세요 기사 제목입니다.</p>
-                        <p className="main-left-text">2024.05.06<img src={PENCIL} alt="Edit" className="main-pencil-icon" /></p>
+                        <p className="main-left-text">2024.05.06<img src={PENCIL} alt="Edit" className="main-pencil-icon-left" /></p>
                         <img src={IMG} alt="Example" className="main-left-image" />
                     </div>
                     <div className="main-right-box">
@@ -78,20 +78,32 @@ const MAIN_3: React.FC = () => {
                     </div>
                 </div>
                 <div className="main-table-container">
-                    <div className="main-table-row main-table-header">
-                        <div className="main-table-cell">
-                            <img src={Q10} alt="Politics" className="main-question-icon" />Politics +
-                        </div>
-                        <div className="main-table-cell">
-                            <img src={Q12} alt="Economy" className="main-question-icon" />Economy +
-                        </div>
-                        <div className="main-table-cell">
-                            <img src={Q13} alt="IT/Science" className="main-question-icon" />IT/Science +
-                        </div>
-                        <div className="main-table-cell">
-                            <img src={Q11} alt="Culture" className="main-question-icon" />Culture +
-                        </div>
+            <div className="main-table-row main-table-header">
+                <div className="main-table-cell">
+                    <div className="main-table-text-container">
+                        <img src={Q10} alt="Politics" className="main-question-icon" />
+                        <p className="main-table-text">Politics +</p>
                     </div>
+                </div>
+                <div className="main-table-cell">
+                    <div className="main-table-text-container">
+                        <img src={Q12} alt="Economy" className="main-question-icon" />
+                        <p className="main-table-text">Economy +</p>
+                    </div>
+                </div>
+                <div className="main-table-cell">
+                    <div className="main-table-text-container">
+                        <img src={Q13} alt="IT/Science" className="main-question-icon" />
+                        <p className="main-table-text">IT/Science +</p>
+                    </div>
+                </div>
+                <div className="main-table-cell">
+                    <div className="main-table-text-container">
+                        <img src={Q11} alt="Culture" className="main-question-icon" />
+                        <p className="main-table-text">Culture +</p>
+                    </div>
+                </div>
+            </div>
                     {[...Array(3)].map((_, index) => (
                         <div className="main-table-row" key={index}>
                             <div className="main-table-cell">
