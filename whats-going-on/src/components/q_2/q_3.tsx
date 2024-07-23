@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './q_3.css';
 import WGO from '../../assets/icons/whats_going_on.svg';
@@ -62,8 +62,9 @@ const topics = [
 const Q_3: React.FC = () => {
   const navigate = useNavigate();
   const [selectedTopics, setSelectedTopics] = useState<string[]>([]);
+  const [showAlert, setShowAlert] = useState(false);
 
-  const handleButtonClick = (topicName: string) => {
+  const handleButtonClick = useCallback((topicName: string) => {
     setSelectedTopics(prevSelected => {
       const isSelected = prevSelected.includes(topicName);
       const updatedSelected = isSelected
@@ -71,17 +72,24 @@ const Q_3: React.FC = () => {
         : [...prevSelected, topicName];
 
       if (updatedSelected.length > 3) {
-        alert('최대 3개까지 선택할 수 있습니다.');
-        return prevSelected; // 상태 변경 없음
+        setShowAlert(true);
+        return prevSelected;
       }
 
       return updatedSelected;
     });
-  };
+  }, []);
+
+  useEffect(() => {
+    if (showAlert) {
+      alert('최대 3개까지 선택할 수 있습니다.');
+      setShowAlert(false);
+    }
+  }, [showAlert]);
 
   const handleNext = () => {
     if (selectedTopics.length === 0) {
-      navigate('/resulteunyoung');
+      alert('1개 이상 선택해야 합니다.');
     } else {
       navigate('/resulteunyoung');
     }

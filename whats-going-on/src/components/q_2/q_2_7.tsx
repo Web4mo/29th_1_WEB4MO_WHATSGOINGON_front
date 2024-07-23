@@ -7,10 +7,9 @@ const Q_2_7: React.FC = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const [selectedTopics, setSelectedTopics] = useState<string[]>(() => {
-    const savedTopics = localStorage.getItem('selectedTopics');
-    return savedTopics ? JSON.parse(savedTopics) : [];
-  });
+  const [selectedTopics, setSelectedTopics] = useState<string[]>([]);
+  const [paths, setPaths] = useState<string[]>([]);
+  const [currentIndex, setCurrentIndex] = useState<number>(0);
 
   const topics = [
     { name: '방송, TV', path: '/q_2/q_3' },
@@ -20,33 +19,41 @@ const Q_2_7: React.FC = () => {
   ];
 
   useEffect(() => {
-    // 페이지 전환 시 상태 유지
-    const currentIndex = location.state?.index || 0;
-    const paths = location.state?.paths || [];
-    if (paths.length > 0 && paths[currentIndex] !== '/q_2/q_2_7') {
-      navigate(paths[currentIndex]);
-    }
-  }, [location.state, navigate]);
+    const statePaths = location.state?.paths || [];
+    setPaths(statePaths);
+    setCurrentIndex(location.state?.index || 0);
+  }, [location.state]);
 
-  const handleClick = (path: string) => {
-    navigate(path);
-  };
+  const handleButtonClick = (topicPath: string) => {
+    setSelectedTopics(prevSelected => {
+      const isSelected = prevSelected.includes(topicPath);
+      const updatedSelection = isSelected
+        ? prevSelected.filter(path => path !== topicPath)
+        : [...prevSelected, topicPath];
 
-  const handlePrev = () => {
-    const prevIndex = (location.state?.index || 0) - 1;
-    if (prevIndex >= 0) {
-      navigate(location.state.paths[prevIndex], { state: { paths: location.state.paths, index: prevIndex } });
-    } else {
-      navigate('/');
-    }
+      return updatedSelection;
+    });
   };
 
   const handleNext = () => {
-    const nextIndex = (location.state?.index || 0) + 1;
-    if (nextIndex < location.state?.paths.length) {
-      navigate(location.state.paths[nextIndex], { state: { paths: location.state.paths, index: nextIndex } });
+    if (selectedTopics.length === 0) {
+      alert('1개 이상 선택해야 합니다.');
     } else {
-      navigate('/q_2/q_3');
+      const nextIndex = currentIndex + 1;
+      if (nextIndex < paths.length) {
+        navigate(paths[nextIndex], { state: { paths, index: nextIndex } });
+      } else {
+        navigate('/q_2/q_3');
+      }
+    }
+  };
+
+  const handlePrev = () => {
+    const prevIndex = currentIndex - 1;
+    if (prevIndex >= 0) {
+      navigate(paths[prevIndex], { state: { paths, index: prevIndex } });
+    } else {
+      navigate('/');
     }
   };
 
@@ -67,19 +74,13 @@ const Q_2_7: React.FC = () => {
         <div className="q2-button-grid-4">
           {topics.map((topic, index) => (
             <button
-              key={index}
-              className={`q2-topic-button ${selectedTopics.includes(topic.path) ? 'selected' : ''}`}
-              onClick={() => {
-                const updatedSelection = selectedTopics.includes(topic.path)
-                  ? selectedTopics.filter(path => path !== topic.path)
-                  : [...selectedTopics, topic.path];
-                setSelectedTopics(updatedSelection);
-                localStorage.setItem('selectedTopics', JSON.stringify(updatedSelection));
-                handleClick(topic.path);
-              }}
-            >
-              {topic.name}
-            </button>
+            key={index}
+            className={`q2-topic-button ${selectedTopics.includes(topic.name) ? 'selected' : ''}`}
+            onClick={() => handleButtonClick(topic.name)}
+            style={{ backgroundColor: selectedTopics.includes(topic.name) ? '#e9e9e9' : 'white' }}
+          >
+            {topic.name}
+          </button>
           ))}
         </div>
       </div>

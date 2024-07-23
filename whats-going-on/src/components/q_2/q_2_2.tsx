@@ -6,10 +6,15 @@ import WGO from '../../assets/icons/whats_going_on.svg';
 const Q_2_2: React.FC = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const [selectedTopics, setSelectedTopics] = useState<{ num: string, path: string }[]>(() => {
-    const savedTopics = localStorage.getItem('selectedTopics');
-    return savedTopics ? JSON.parse(savedTopics) : [];
-  });
+  const [selectedTopics, setSelectedTopics] = useState<string[]>([]);
+  const [paths, setPaths] = useState<string[]>([]);
+  const [currentIndex, setCurrentIndex] = useState<number>(0);
+
+  useEffect(() => {
+    const statePaths = location.state?.paths || [];
+    setPaths(statePaths);
+    setCurrentIndex(location.state?.index || 0);
+  }, [location.state]);
 
   const topics = [
     { name: '금융/증권', detail: '중기 대출금리 5분기 연속 금리 5%대...\n파산·개인회생 신청 급증', path: '/q_2/q_3' },
@@ -19,36 +24,36 @@ const Q_2_2: React.FC = () => {
     { name: '생활 경제', detail: '우유 원윳값 또 오를까...\n다음 달 11일부터 가격협상', path: '/q_2/q_3' }
   ];
 
-  useEffect(() => {
-    const paths = location.state?.paths || [];
-    const currentIndex = location.state?.index || 0;
-    if (paths.length > 0) {
-      const currentPath = paths[currentIndex];
-      if (currentPath !== '/q_2/q_2_2') {
-        navigate(currentPath);
-      }
-    }
-  }, [location.state, navigate]);
+  const handleButtonClick = (topicName: string) => {
+    setSelectedTopics(prevSelected => {
+      const isSelected = prevSelected.includes(topicName);
+      const updatedSelected = isSelected
+        ? prevSelected.filter(name => name !== topicName)
+        : [...prevSelected, topicName];
 
-  const handleClick = (path: string) => {
-    navigate(path);
-  };
-
-  const handlePrev = () => {
-    const prevIndex = (location.state?.index || 0) - 1;
-    if (prevIndex >= 0) {
-      navigate(location.state.paths[prevIndex], { state: { paths: location.state.paths, index: prevIndex } });
-    } else {
-      navigate('/');
-    }
+      return updatedSelected;
+    });
   };
 
   const handleNext = () => {
-    const nextIndex = (location.state?.index || 0) + 1;
-    if (nextIndex < location.state?.paths.length) {
-      navigate(location.state.paths[nextIndex], { state: { paths: location.state.paths, index: nextIndex } });
+    if (selectedTopics.length === 0) {
+      alert('1개 이상 선택해야 합니다.');
     } else {
-      navigate('/q_2/q_3');
+      const nextIndex = currentIndex + 1;
+      if (nextIndex < paths.length) {
+        navigate(paths[nextIndex], { state: { paths, index: nextIndex } });
+      } else {
+        navigate('/q_2/q_3');
+      }
+    }
+  };
+
+  const handlePrev = () => {
+    const prevIndex = currentIndex - 1;
+    if (prevIndex >= 0) {
+      navigate(paths[prevIndex], { state: { paths, index: prevIndex } });
+    } else {
+      navigate('/');
     }
   };
 
@@ -72,8 +77,9 @@ const Q_2_2: React.FC = () => {
           {topics.map((topic, index) => (
             <button
               key={index}
-              className={`q2-topic-button-detail-6 ${selectedTopics.some(t => t.path === topic.path) ? 'selected' : ''}`}
-              onClick={() => handleClick(topic.path)}
+              className={`q2-topic-button-detail-6 ${selectedTopics.includes(topic.name) ? 'selected' : ''}`}
+              onClick={() => handleButtonClick(topic.name)}
+              style={{ opacity: selectedTopics.length === 0 || selectedTopics.includes(topic.name) ? 1 : 0.5 }}
             >
               <div className="q2-name-6">{topic.name}</div>
               <div className="q2-separator-6"></div>

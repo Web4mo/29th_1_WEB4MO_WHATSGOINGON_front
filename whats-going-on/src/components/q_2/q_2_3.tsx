@@ -6,11 +6,15 @@ import WGO from '../../assets/icons/whats_going_on.svg';
 const Q_2_3: React.FC = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  
-  const [selectedTopics, setSelectedTopics] = useState<{ num: string, path: string }[]>(() => {
-    const savedTopics = localStorage.getItem('selectedTopics');
-    return savedTopics ? JSON.parse(savedTopics) : [];
-  });
+  const [selectedTopics, setSelectedTopics] = useState<string[]>([]);
+  const [paths, setPaths] = useState<string[]>([]);
+  const [currentIndex, setCurrentIndex] = useState<number>(0);
+
+  useEffect(() => {
+    const statePaths = location.state?.paths || [];
+    setPaths(statePaths);
+    setCurrentIndex(location.state?.index || 0);
+  }, [location.state]);
 
   const topics = [
     { name: '모바일', detail: '아이폰 내구성, 이렇게 테스트한다/\n日통신사, 2030년 달에서 고속 모바일통신 서비스 추진', path: '/q_2/q_3' },
@@ -21,36 +25,36 @@ const Q_2_3: React.FC = () => {
     { name: '게임', detail: '숲에서는 WWE도 애니도 무료…\n이색 K팝 프로그램까지', path: '/q_2/q_3' }
   ];
 
-  useEffect(() => {
-    const paths = location.state?.paths || [];
-    const currentIndex = location.state?.index || 0;
-    if (paths.length > 0) {
-      const currentPath = paths[currentIndex];
-      if (currentPath !== '/q_2/q_2_3') {
-        navigate(currentPath);
-      }
-    }
-  }, [location.state, navigate]);
+  const handleButtonClick = (topicName: string) => {
+    setSelectedTopics(prevSelected => {
+      const isSelected = prevSelected.includes(topicName);
+      const updatedSelected = isSelected
+        ? prevSelected.filter(name => name !== topicName)
+        : [...prevSelected, topicName];
 
-  const handleClick = (path: string) => {
-    navigate(path);
-  };
-
-  const handlePrev = () => {
-    const prevIndex = (location.state?.index || 0) - 1;
-    if (prevIndex >= 0) {
-      navigate(location.state.paths[prevIndex], { state: { paths: location.state.paths, index: prevIndex } });
-    } else {
-      navigate('/');
-    }
+      return updatedSelected;
+    });
   };
 
   const handleNext = () => {
-    const nextIndex = (location.state?.index || 0) + 1;
-    if (nextIndex < location.state?.paths.length) {
-      navigate(location.state.paths[nextIndex], { state: { paths: location.state.paths, index: nextIndex } });
+    if (selectedTopics.length === 0) {
+      alert('1개 이상 선택해야 합니다.');
     } else {
-      navigate('/q_2/q_3');
+      const nextIndex = currentIndex + 1;
+      if (nextIndex < paths.length) {
+        navigate(paths[nextIndex], { state: { paths, index: nextIndex } });
+      } else {
+        navigate('/q_2/q_3');
+      }
+    }
+  };
+
+  const handlePrev = () => {
+    const prevIndex = currentIndex - 1;
+    if (prevIndex >= 0) {
+      navigate(paths[prevIndex], { state: { paths, index: prevIndex } });
+    } else {
+      navigate('/');
     }
   };
 
@@ -73,21 +77,22 @@ const Q_2_3: React.FC = () => {
         <div className="q2-button-grid-detail-6">
           {topics.map((topic, index) => (
             <button
-              key={index}
-              className={`q2-topic-button-detail-6 ${selectedTopics.some(t => t.path === topic.path) ? 'selected' : ''}`}
-              onClick={() => handleClick(topic.path)}
-            >
-              <div className="q2-name-6">{topic.name}</div>
-              <div className="q2-separator-6"></div>
-              <div className="q2-detail-6">
-                {topic.detail.split('\n').map((line, i) => (
-                  <React.Fragment key={i}>
-                    {line}
-                    <br />
-                  </React.Fragment>
-                ))}
-              </div>
-            </button>
+            key={index}
+            className={`q2-topic-button-detail-6 ${selectedTopics.includes(topic.name) ? 'selected' : ''}`}
+            onClick={() => handleButtonClick(topic.name)}
+            style={{ opacity: selectedTopics.length === 0 || selectedTopics.includes(topic.name) ? 1 : 0.5 }}
+          >
+            <div className="q2-name-6">{topic.name}</div>
+            <div className="q2-separator-6"></div>
+            <div className="q2-detail-6">
+              {topic.detail.split('\n').map((line, i) => (
+                <React.Fragment key={i}>
+                  {line}
+                  <br />
+                </React.Fragment>
+              ))}
+            </div>
+          </button>
           ))}
         </div>
       </div>

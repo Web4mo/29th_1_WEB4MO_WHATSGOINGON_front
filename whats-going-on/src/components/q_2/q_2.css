@@ -84,6 +84,14 @@
   flex-direction: column;
 }
 
+.q2-topic-button-detail.selected {
+  opacity: 1;
+}
+
+.q2-topic-button-detail-6.selected {
+  opacity: 1;
+}
+
 .q2-topic-button-detail {
   padding-top: 17px;
   font-size: 18px;
@@ -95,6 +103,7 @@
   align-items: center;
   display: flex;
   flex-direction: column;
+  transition: opacity 0.3s;
 }
 
 .q2-topic-button-detail-6 {
@@ -108,6 +117,7 @@
   align-items: center;
   display: flex;
   flex-direction: column;
+  transition: opacity 0.3s;
 }
 
 .q2-separator-6 {
