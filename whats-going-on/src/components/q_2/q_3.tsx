@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './q_3.css';
 import WGO from '../../assets/icons/whats_going_on.svg';
@@ -61,9 +61,37 @@ const topics = [
 
 const Q_3: React.FC = () => {
   const navigate = useNavigate();
+  const [selectedTopics, setSelectedTopics] = useState<string[]>(() => {
+    const savedTopics = localStorage.getItem('selectedTopics');
+    return savedTopics ? JSON.parse(savedTopics) : [];
+  });
 
-  const handleClick = (path: string) => {
-    navigate(path);
+  const handleButtonClick = (topicName: string) => {
+    setSelectedTopics(prevSelected => {
+      const isSelected = prevSelected.includes(topicName);
+      const updatedSelected = isSelected
+        ? prevSelected.filter(name => name !== topicName)
+        : [...prevSelected, topicName];
+
+      // 4개 이상 선택된 경우 안내 메시지
+      if (updatedSelected.length > 3) {
+        alert('최대 3개까지 선택할 수 있습니다.');
+        return prevSelected; // 상태 변경 없음
+      }
+
+      // 로컬 스토리지에 저장
+      localStorage.setItem('selectedTopics', JSON.stringify(updatedSelected));
+      
+      return updatedSelected;
+    });
+  };
+
+  const handleNext = () => {
+    navigate('/nextpage');
+  };
+
+  const handlePrev = () => {
+    navigate('/');
   };
 
   return (
@@ -79,18 +107,22 @@ const Q_3: React.FC = () => {
         <h1>Q. 3</h1>
         <h3>관심 있는 뉴스사를 골라주세요! (1-3개)</h3>    
         <p>언론사 선택은 선택 사항이며, 원하지 않으실 경우 이 단계를 건너뛰실 수 있습니다.</p>
-        <button className="q3-prev-button">&lt;</button> 
-        <button className="q3-next-button">&gt;</button>
+        <button className="q3-prev-button" onClick={handlePrev}>&lt;</button> 
+        <button className="q3-next-button" onClick={handleNext}>&gt;</button>
       </div>
-        <div className="q3-content-button">
-          <div className="q3-button-grid-news">
-            {topics.map((topic, index) => (
-              <button key={index} className="q3-news-button" onClick={() => handleClick(topic.path)}>
-                <img src={newsIcons[index]} alt={topic.name} className="q3-news-icon" />
-              </button>
-           ))}
-         </div>
-    </div>
+      <div className="q3-content-button">
+        <div className="q3-button-grid-news">
+          {topics.map((topic, index) => (
+            <button
+              key={index}
+              className={`q3-news-button ${selectedTopics.includes(topic.name) ? 'selected' : ''}`}
+              onClick={() => handleButtonClick(topic.name)}
+            >
+              <img src={newsIcons[index]} alt={topic.name} className="q3-news-icon" />
+            </button>
+          ))}
+        </div>
+      </div>
     </div>
   );
 };
