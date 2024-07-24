@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import { IconArrow, ScrapFolderImg, IconDelete } from "assets/export";
 import { Link } from "react-router-dom";
 import { useScrap } from "./ScrapContext";
-import Delete from "./scrapPoppup/ScrapFolderDelete";
+import FolderDelete from "./scrapPoppup/ScrapFolderDelete";
 import "./ScrapFolder.css";
 
 interface ScrapFolderProps {
@@ -105,7 +105,7 @@ const ScrapFolder: React.FC<ScrapFolderProps> = ({
           <li key={index}>{newsItem}</li>
         ))}
       </ul>
-      <Delete
+      <FolderDelete
         isOpen={showDelete}
         onClose={handleCancelDelete}
         onConfirm={handleConfirmDelete}
