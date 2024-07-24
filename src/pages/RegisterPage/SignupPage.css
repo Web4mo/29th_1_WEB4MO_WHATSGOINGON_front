@@ -1,0 +1,30 @@
+.signupForm {
+  text-align: center;
+  margin-top: 70px;
+}
+.signupLabel {
+  display: inline-block;
+  width: 130px;
+  text-align: left;
+  font-size: large;
+}
+.signupInput {
+  width: 400px;
+  height: 40px;
+  border: none;
+  border-radius: 10px;
+  background-color: #f4f4f4;
+}
+.signupInput::placeholder {
+  color: #c5c5c5;
+  font-size: 15px;
+  text-align: left;
+  text-indent: 10px;
+  font-weight: 350;
+}
+.signupButton {
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+  margin: 10px;
+}

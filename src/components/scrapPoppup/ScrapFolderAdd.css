@@ -1,0 +1,61 @@
+.addModalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.addModalContent {
+  position: relative;
+  background: white;
+  padding: 40px;
+  border-radius: 8px;
+  width: 500px;
+  height: 300px;
+}
+.addFolderImg {
+  float: left;
+}
+.addFolderText {
+  padding-right: 300px;
+  margin-top: 10px;
+}
+.addFolderLabel {
+  float: left;
+  margin-bottom: 15px;
+}
+.addFolderInput {
+  background-color: #ececec;
+  width: 500px;
+  height: 30px;
+  border: none;
+  border-radius: 10px;
+}
+.addcancelButton,
+.addButton {
+  border: none;
+  background-color: transparent;
+}
+
+.addModalButtons {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+
+.addConfirmButton,
+.addCancelButton {
+  border: none;
+  padding: 5px;
+  margin-left: 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  background-color: transparent;
+}
