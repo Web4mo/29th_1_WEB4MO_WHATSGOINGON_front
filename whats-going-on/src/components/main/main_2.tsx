@@ -6,7 +6,6 @@ import IMG from '../../assets/icons/img.jpg';
 import PENCIL from '../../assets/icons/pencil.svg';
 import Q10 from '../../assets/icons/q_1_0.svg';
 import Q12 from '../../assets/icons/q_1_2.svg';
-import Q13 from '../../assets/icons/q_1_3.svg';
 import './main.css';
 
 const newsIcons = [
@@ -37,10 +36,14 @@ const newsIcons = [
     require('../../assets/icons/news/news_24.svg').default
 ];
 
-const MAIN_3: React.FC = () => {
+const MAIN_2: React.FC = () => {
     const navigate = useNavigate();
     const icon1 = newsIcons[3];
     const icon2 = newsIcons[5];
+
+    const handleButtonClick = () => {
+        navigate('/asdf');
+    };
 
     return (
         <div className="main-container">
@@ -92,8 +95,7 @@ const MAIN_3: React.FC = () => {
                         </div>
                         <div className="main-table-cell-3">
                             <div className="main-table-text-container">
-                                <img src={Q13} alt="IT/Science" className="main-question-icon" />
-                                <p className="main-table-text">IT/Science +</p>
+                                <p className="main-table-text">+ 더보기</p>
                             </div>
                         </div>
                     </div>
@@ -116,12 +118,11 @@ const MAIN_3: React.FC = () => {
                                 </p>
                             </div>
                             <div className="main-table-cell-3">
-                                <img src={IMG} alt="Example" className="main-fixed-size-image" />
-                                <p className="main-table-text">안녕하세요 기사 제목입니다.</p>
-                                <p className="main-table-subtext">
-                                    2024.05.06
-                                    <img src={PENCIL} alt="Edit" className="main-pencil-icon" />
-                                </p>
+                                {index === 0 ? (
+                                    <button className="main-button" onClick={handleButtonClick}>
+                                        관심 분야 추가하러 이동하기
+                                    </button>
+                                ) : null}
                             </div>
                         </div>
                     ))}
@@ -131,4 +132,4 @@ const MAIN_3: React.FC = () => {
     );
 };
 
-export default MAIN_3;
+export default MAIN_2;

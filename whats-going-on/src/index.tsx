@@ -15,6 +15,7 @@ import Q_3 from './components/q_2/q_3';
 import CAL from './components/cal/calendar';
 import MAIN_4 from './components/main/main_4';
 import MAIN_3 from './components/main/main_3';
+import MAIN_2 from './components/main/main_2';
 import TestResult from './components/q_2/test_result';
 import reportWebVitals from './reportWebVitals';
 
@@ -36,6 +37,7 @@ const Root: React.FC = () => {
         <Route path="/q_2/test_result" element={<TestResult />} />
         <Route path="/main/main_4" element={<MAIN_4 />} />
         <Route path="/main/main_3" element={<MAIN_3 />} />
+        <Route path="/main/main_2" element={<MAIN_2 />} />
       </Routes>
     </Router>
   );
