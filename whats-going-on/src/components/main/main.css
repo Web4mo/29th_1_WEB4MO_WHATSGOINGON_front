@@ -345,3 +345,38 @@
     max-width: 305px;
     border-radius: 30px;
 }
+
+.main-news-button {
+    border-radius: 5px;
+    padding: 5px 17px;
+    cursor: pointer;
+    border: none;
+    background-color: white;
+    color: black;
+    margin-bottom: 30px;
+    width: 110px;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
+}
+
+.main-disabled-button {
+    cursor: default;
+    opacity: 0;
+    box-shadow: none;
+    width: 110px;
+    padding: 5px 17px;
+    height: 35px;
+    margin-bottom: 30px;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-news-icon {
+    max-width: 90%;
+    max-height: 90%;
+    width: 90%;
+    height: 90%;
+}

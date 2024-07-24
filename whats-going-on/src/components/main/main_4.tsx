@@ -40,8 +40,7 @@ const newsIcons = [
 
 const MAIN_4: React.FC = () => {
     const navigate = useNavigate();
-    const icon1 = newsIcons[3];
-    const icon2 = newsIcons[5];
+    const newsIndices: string[] = ["2", "5", "23"];
 
     return (
         <div className="main-container">
@@ -62,12 +61,21 @@ const MAIN_4: React.FC = () => {
                     </div>
                     <div className="main-right-box">
                         <div className="main-header-buttons">
-                            <button className="main-news-button" onClick={() => navigate('/news')}>
-                                <img src={icon1} alt="News Icon 1" className="main-news-icon" />
-                            </button>
-                            <button className="main-news-button" onClick={() => navigate('/news')}>
-                                <img src={icon2} alt="News Icon 2" className="main-news-icon" />
-                            </button>
+                            {newsIndices.length > 0 ? (
+                                newsIndices.map((index) => {
+                                    const iconIndex = parseInt(index, 10);
+                                    if (iconIndex >= 0 && iconIndex < newsIcons.length) {
+                                        return (
+                                            <button key={index} className="main-news-button" onClick={() => navigate('/news')}>
+                                                <img src={newsIcons[iconIndex]} alt={`News Icon ${index}`} className="main-news-icon" />
+                                            </button>
+                                        );
+                                    }
+                                    return null;
+                                })
+                            ) : (
+                                <button className="main-disabled-button" disabled></button>
+                            )}
                         </div>
                         <p className="main-HAD">How About This?</p>
                         <button className="main-headline-button">데일리 헤드라인 추천 기사입니다.</button>
@@ -78,32 +86,32 @@ const MAIN_4: React.FC = () => {
                     </div>
                 </div>
                 <div className="main-table-container">
-            <div className="main-table-row main-table-header">
-                <div className="main-table-cell">
-                    <div className="main-table-text-container">
-                        <img src={Q10} alt="Politics" className="main-question-icon" />
-                        <p className="main-table-text">Politics +</p>
+                    <div className="main-table-row main-table-header">
+                        <div className="main-table-cell">
+                            <div className="main-table-text-container">
+                                <img src={Q10} alt="Politics" className="main-question-icon" />
+                                <p className="main-table-text">Politics +</p>
+                            </div>
+                        </div>
+                        <div className="main-table-cell">
+                            <div className="main-table-text-container">
+                                <img src={Q12} alt="Economy" className="main-question-icon" />
+                                <p className="main-table-text">Economy +</p>
+                            </div>
+                        </div>
+                        <div className="main-table-cell">
+                            <div className="main-table-text-container">
+                                <img src={Q13} alt="IT/Science" className="main-question-icon" />
+                                <p className="main-table-text">IT/Science +</p>
+                            </div>
+                        </div>
+                        <div className="main-table-cell">
+                            <div className="main-table-text-container">
+                                <img src={Q11} alt="Culture" className="main-question-icon" />
+                                <p className="main-table-text">Culture +</p>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div className="main-table-cell">
-                    <div className="main-table-text-container">
-                        <img src={Q12} alt="Economy" className="main-question-icon" />
-                        <p className="main-table-text">Economy +</p>
-                    </div>
-                </div>
-                <div className="main-table-cell">
-                    <div className="main-table-text-container">
-                        <img src={Q13} alt="IT/Science" className="main-question-icon" />
-                        <p className="main-table-text">IT/Science +</p>
-                    </div>
-                </div>
-                <div className="main-table-cell">
-                    <div className="main-table-text-container">
-                        <img src={Q11} alt="Culture" className="main-question-icon" />
-                        <p className="main-table-text">Culture +</p>
-                    </div>
-                </div>
-            </div>
                     {[...Array(3)].map((_, index) => (
                         <div className="main-table-row" key={index}>
                             <div className="main-table-cell">
