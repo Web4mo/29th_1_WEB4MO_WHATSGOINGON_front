@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useGotoRetest } from 'components/resultFunc';
 import './Profile.css';
 import ProfileUpload from 'components/profileUpload';
 import EditInfo from 'components/editInfo';
@@ -18,14 +18,7 @@ function Profile(): JSX.Element {
     setModalIsOpen(false);
   };
 
-  // const gotoHome = () => {
-  //   const navigate = useNavigate();
-  //   navigate('/main');
-  // };
-  const gotoRetest = () => {
-    const navigate = useNavigate();
-    navigate('/analy');
-  };
+  const gotoRetest = useGotoRetest();
 
   return (
     <div className="back">

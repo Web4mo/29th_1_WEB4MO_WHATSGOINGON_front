@@ -16,7 +16,6 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="" element={<Propensity_analysis />}></Route>
         <Route path="/analy" element={<Propensity_analysis />}></Route>
         <Route path="/analy/resultpage1" element={<ResultPage1 />}></Route>
         <Route path="/analy/resultpage2" element={<ResultPage2 />}></Route>

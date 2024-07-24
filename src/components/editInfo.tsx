@@ -17,29 +17,16 @@ interface InterestKeywords {
 
 const interestKeywords: InterestKeywords = {
   정치: ['국회/정당', '북한', '국방/외교', '행정'],
-  경제: ['금융', '증권', '산업', '부동산', '글로벌경제', '생활경제'],
+  경제: ['금융/증권', '산업', '부동산', '글로벌경제', '생활경제'],
   생활문화: [
     '건강정보',
-    '자동차',
     '도로교통',
     '여행/레저',
     '음식/맛집',
     '패션/뷰티',
     '공연/전시',
-    '책',
-    '종교',
   ],
-  사회: [
-    '사건사고',
-    '교육',
-    '노동',
-    '언론',
-    '환경',
-    '인권/복지',
-    '식품/의료',
-    '지역',
-    '인물',
-  ],
+  사회: ['사건사고', '교육', '언론', '환경', '인권/복지', '식품/의료'],
   연예: ['방송/TV', '드라마', '뮤직', '해외연예'],
   세계: ['아시아/호주', '미국/중남미', '유럽', '중동/아프리카'],
   'IT / 과학': ['모바일', '인터넷/sns', '통신', '보안/해킹', '컴퓨터', '게임'],
@@ -51,9 +38,11 @@ const mediaOptions = [
   '국민일보',
   '서울신문',
   '중앙일보',
+  '머니투데이',
   '한국경제',
   '한국일보',
   '매일경제',
+  '조선일보',
   '한겨레',
 ];
 
@@ -61,11 +50,18 @@ const moreMediaOptions = [
   '전자신문',
   '서울경제',
   '세계일보',
+  '동아일보',
   '아시아경제',
   '경기일보',
   '내일신문',
   '문화일보',
+  '아주경제',
   '파이낸셜뉴스',
+  '강원일보',
+  '디지털타임스',
+  '해럴드경제',
+  '강원도민일보',
+  '경남도민일보',
 ];
 
 Modal.setAppElement('#root');
@@ -193,7 +189,7 @@ const EditInfo: React.FC<PopUpProps> = ({ isOpen, onRequestClose }) => {
 
     return groupCheckboxes(
       allMediaOptions.map((mediaItem) => (
-        <label key={mediaItem} style={{ marginLeft: '60px' }}>
+        <label key={mediaItem} style={{ marginLeft: '40px', width: '100pt' }}>
           <input
             type="checkbox"
             value={mediaItem}
@@ -203,7 +199,7 @@ const EditInfo: React.FC<PopUpProps> = ({ isOpen, onRequestClose }) => {
           {mediaItem}
         </label>
       )),
-      4,
+      5,
     );
   };
 
