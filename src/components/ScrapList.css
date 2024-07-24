@@ -1,0 +1,36 @@
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3px;
+  padding: 50px;
+}
+.grid-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.sortSwitch {
+  display: flex;
+  gap: 5px; /* Add space between buttons */
+}
+
+.sortButton {
+  padding: 8px 16px; /* Reduce button size */
+  border: 1px solid #ccc; /* Light gray border */
+  background: #f0f0f0; /* Light gray background */
+  color: #333; /* Dark gray text */
+  cursor: pointer;
+  border-radius: 4px; /* Rounded corners */
+  font-weight: bold; /* Make text bold */
+}
+
+.sortButton.active {
+  background: #333; /* Dark gray background for active button */
+  color: #fff; /* White text for active button */
+  border-color: #333; /* Dark gray border for active button */
+}
+
+.sortButton:not(.active):hover {
+  background: #d0d0d0; /* Slightly darker gray for hover on inactive buttons */
+}
