@@ -88,11 +88,7 @@ const Q_3: React.FC = () => {
   }, [showAlert]);
 
   const handleNext = () => {
-    if (selectedTopics.length === 0) {
-      alert('1개 이상 선택해야 합니다.');
-    } else {
       navigate('/resulteunyoung');
-    }
   };
 
   const handlePrev = () => {
