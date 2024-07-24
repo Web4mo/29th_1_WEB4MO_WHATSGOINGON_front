@@ -1,18 +1,18 @@
 import React from "react";
 import {
-  ScrapFolderDelete1,
-  ScrapFolderDelete2,
-  ScrapFolderDelete3,
+  ScrapFileDelete1,
+  ScrapFileDelete2,
+  ScrapFileDelete3,
 } from "assets/export";
 import "./ScrapFolderDelete.css";
 
-interface FolderDeletePopupProps {
+interface FileDeletePopupProps {
   isOpen: boolean;
   onClose: () => void;
   onConfirm: () => void;
 }
 
-const FolderDelete: React.FC<FolderDeletePopupProps> = ({
+const FileDelete: React.FC<FileDeletePopupProps> = ({
   isOpen,
   onClose,
   onConfirm,
@@ -22,13 +22,13 @@ const FolderDelete: React.FC<FolderDeletePopupProps> = ({
   return (
     <div className="deleteModalOverlay">
       <div className="deleteModalContent">
-        <ScrapFolderDelete1 />
+        <ScrapFileDelete1 />
         <div className="deleteModalButtons">
           <button onClick={onClose} className="deleteCancelButton">
-            <ScrapFolderDelete2 />
+            <ScrapFileDelete2 />
           </button>
           <button onClick={onConfirm} className="deleteConfirmButton">
-            <ScrapFolderDelete3 />
+            <ScrapFileDelete3 />
           </button>
         </div>
       </div>
@@ -36,4 +36,4 @@ const FolderDelete: React.FC<FolderDeletePopupProps> = ({
   );
 };
 
-export default FolderDelete;
+export default FileDelete;
