@@ -17,5 +17,11 @@
     "noEmit": true,
     "jsx": "react-jsx"
   },
-  "include": ["src"]
+  "include": [
+    "src",
+    "whats-going-on/src/components/cal",
+    "whats-going-on/src/components/main",
+    "whats-going-on/src/components/q_1",
+    "whats-going-on/src/components/q_2"
+  ]
 }
