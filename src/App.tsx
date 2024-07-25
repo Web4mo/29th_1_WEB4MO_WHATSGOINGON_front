@@ -5,7 +5,7 @@ import Login from "pages/RegisterPage/LoginPage";
 import Signup from "pages/RegisterPage/SignupPage";
 import ScrapListPage from "pages/ScrapPage/ScrapListPage";
 import ScrapPage from "pages/ScrapPage/ScrapPage";
-
+import Q_1 from "./components/q_1/q_1";
 import Q_2_0 from "./components/q_2/q_2_0";
 import Q_2_1 from "./components/q_2/q_2_1";
 import Q_2_2 from "./components/q_2/q_2_2";
@@ -31,6 +31,7 @@ function App() {
         <Route path="/scrap" element={<ScrapPage />} />
         <Route path="/scrap/:folder" element={<ScrapPage />} />
         <Route path="/scraplist" element={<ScrapListPage />} />
+        <Route path="/q_1/q_1" element={<Q_1 />} />
         <Route path="/q_2/q_2_0" element={<Q_2_0 />} />
         <Route path="/q_2/q_2_1" element={<Q_2_1 />} />
         <Route path="/q_2/q_2_2" element={<Q_2_2 />} />
