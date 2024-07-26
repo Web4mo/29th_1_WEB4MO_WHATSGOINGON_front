@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Logo2 } from "assets/export";
 import { useNavigate } from "react-router-dom";
-import FileSave from "components/scrapPoppup/ScrapFileSave";
-import FileDelete from "components/scrapPoppup/ScrapFileDelete";
+import FileSave from "components/scrap/scrapPoppup/ScrapFileSave";
+import FileDelete from "components/scrap/scrapPoppup/ScrapFileDelete";
 import "./ScrapPage.css";
 
 const ScrapPage: React.FC = () => {

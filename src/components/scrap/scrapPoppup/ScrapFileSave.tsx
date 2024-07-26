@@ -17,9 +17,9 @@ const FileSave: React.FC<FileSavePopupProps> = ({
 
   return (
     <div className="deleteModalOverlay">
-      <div className="deleteModalContent">
+      <div className="saveModalContent">
         <ScrapFileSave1 />
-        <div className="deleteModalButtons">
+        <div className="saveModalButtons">
           <button onClick={onClose} className="deleteCancelButton">
             <ScrapFileSave2 />
           </button>
