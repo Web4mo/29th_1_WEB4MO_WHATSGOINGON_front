@@ -1,0 +1,28 @@
+.logo {
+  display: flex;
+  margin-top: -2vh;
+  margin-bottom: 10vh;
+  margin-left: 5vw;
+}
+.name {
+  text-align: center;
+  font-size: 15pt;
+  margin-top: 3vh;
+}
+.ques {
+  margin-top: 5vh;
+  margin-left: 30vw;
+}
+.arrow {
+  display: flexbox;
+  margin-bottom: 15vh;
+}
+.answer {
+  display: flex;
+  justify-content: center;
+  margin-top: 3vh;
+}
+.answerdiv {
+  margin-top: 15vh;
+  padding-bottom: 10vh;
+}
