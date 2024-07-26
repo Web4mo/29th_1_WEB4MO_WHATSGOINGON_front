@@ -32,7 +32,7 @@ const ScrapPage: React.FC = () => {
           <button className="home-button">Home</button>
         </Link>
       </header>
-      <main className="main-content">
+      <main className="scrap-content">
         <div className="article-section">
           <button className="view-article-button">기사 원문 보기</button>
           <div className="article-meta">

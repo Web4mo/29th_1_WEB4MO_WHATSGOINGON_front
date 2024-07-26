@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
-import { useGotoRetest } from 'components/resultFunc';
-import './Profile.css';
-import ProfileUpload from 'components/profileUpload';
-import EditInfo from 'components/editInfo';
-import { Logout, Home, Rectangle } from 'assets';
-import { Info, Calendar, Scrap } from 'assets';
-import { Modify, Retest2 } from 'assets';
+import React, { useState } from "react";
+import { useGotoRetest } from "components/resultFunc";
+import "./Profile.css";
+import ProfileUpload from "components/profileUpload";
+import EditInfo from "components/editInfo";
+import { Logout, Home, Rectangle } from "assets";
+import { Info, Calendar, Scrap } from "assets";
+import { Modify, Retest2 } from "assets";
 
 function Profile(): JSX.Element {
   const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -50,9 +50,9 @@ function Profile(): JSX.Element {
       <ProfileUpload />
       <div
         style={{
-          marginTop: '40vh',
-          marginBottom: '10vh',
-          marginLeft: '47vw',
+          marginTop: "40vh",
+          marginBottom: "10vh",
+          marginLeft: "47vw",
         }}
       >
         <Modify onClick={openModal} />
