@@ -1,11 +1,11 @@
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 export const useGotoRetest = () => {
   const navigate = useNavigate();
-  return () => navigate('/analy');
+  return () => navigate("/analy");
 };
 
 export const useGotoSignUp = () => {
   const navigate = useNavigate();
-  return () => navigate('/auth/sign-up');
+  return () => navigate("/auth/sign-up");
 };
