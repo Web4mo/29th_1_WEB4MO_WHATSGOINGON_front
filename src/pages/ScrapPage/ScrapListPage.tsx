@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import ScrapList from "../../components/ScrapList";
-import { useScrap } from "../../components/ScrapContext";
+import ScrapList from "components/scrap/ScrapList";
+import { useScrap } from "../../components/scrap/ScrapContext";
 import Add from "components/scrapPoppup/ScrapFolderAdd";
 import "./ScrapListPage.css";
 

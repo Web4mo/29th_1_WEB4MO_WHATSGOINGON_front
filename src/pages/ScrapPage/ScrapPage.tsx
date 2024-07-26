@@ -1,11 +1,17 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Logo2 } from "assets/export";
+import { useNavigate } from "react-router-dom";
+import FileSave from "components/scrapPoppup/ScrapFileSave";
+import FileDelete from "components/scrapPoppup/ScrapFileDelete";
 import "./ScrapPage.css";
 
 const ScrapPage: React.FC = () => {
   const [memo, setMemo] = useState<string>("");
   const [isEditing, setIsEditing] = useState<boolean>(false);
+  const [showDelete, setShowDelete] = useState<boolean>(false);
+  const [showSave, setShowSave] = useState<boolean>(false);
+  const navigate = useNavigate();
 
   const handleMemoChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setMemo(e.target.value);
@@ -15,9 +21,29 @@ const ScrapPage: React.FC = () => {
     setIsEditing(!isEditing);
   };
 
-  const saveMemo = () => {
-    alert("메모가 저장되었습니다.");
+  const handleSaveClick = () => {
+    setShowSave(true);
     setIsEditing(false);
+  };
+
+  const handleButtonHome = () => {
+    setShowSave(false);
+    navigate(`/main`);
+  };
+  const handleCancelSave = () => {
+    setShowSave(false);
+  };
+  const handleDeleteClick = () => {
+    setShowDelete(true);
+  };
+
+  const handleConfirmDelete = () => {
+    // 스크랩 파일 삭제 로직 추가
+    setShowDelete(false);
+  };
+
+  const handleCancelDelete = () => {
+    setShowDelete(false);
   };
 
   const articleContent =
@@ -27,7 +53,9 @@ const ScrapPage: React.FC = () => {
     <div className="container">
       <header className="header">
         <Logo2 className="headerLogo" />
-        <button className="delete-button">Delete</button>
+        <button className="delete-button" onClick={handleDeleteClick}>
+          Delete
+        </button>
         <Link to="/">
           <button className="home-button">Home</button>
         </Link>
@@ -53,7 +81,7 @@ const ScrapPage: React.FC = () => {
           ></textarea>
           <div className="memo-buttons">
             {isEditing ? (
-              <button className="edit-memo-button" onClick={saveMemo}>
+              <button className="edit-memo-button" onClick={handleSaveClick}>
                 메모 저장
               </button>
             ) : (
@@ -66,6 +94,16 @@ const ScrapPage: React.FC = () => {
           <div className="ai-summary-content">(요약된 내용)</div>
         </div>
       </main>
+      <FileDelete
+        isOpen={showDelete}
+        onClose={handleCancelDelete}
+        onConfirm={handleConfirmDelete}
+      />
+      <FileSave
+        isOpen={showSave}
+        onClose={handleCancelSave}
+        onConfirm={handleButtonHome}
+      />
     </div>
   );
 };
