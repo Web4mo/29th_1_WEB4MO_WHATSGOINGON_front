@@ -43,17 +43,20 @@ function Propensity_analysis() {
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [selectedAnswers, setSelectedAnswers] = useState<(string | null)[]>(
+    Array(questions.length).fill(null)
+  );
 
   const clickA = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex < questions.length - 1 ? prevIndex + 1 : prevIndex
-    );
+    const newSelectedAnswers = [...selectedAnswers];
+    newSelectedAnswers[currentIndex] = "A";
+    setSelectedAnswers(newSelectedAnswers);
   };
 
   const clickB = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex < questions.length - 1 ? prevIndex + 1 : prevIndex
-    );
+    const newSelectedAnswers = [...selectedAnswers];
+    newSelectedAnswers[currentIndex] = "B";
+    setSelectedAnswers(newSelectedAnswers);
   };
 
   const PrevQ = () => {
@@ -61,9 +64,11 @@ function Propensity_analysis() {
   };
 
   const NextQ = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex < questions.length - 1 ? prevIndex + 1 : prevIndex
-    );
+    if (selectedAnswers[currentIndex]) {
+      setCurrentIndex((prevIndex) =>
+        prevIndex < questions.length - 1 ? prevIndex + 1 : prevIndex
+      );
+    }
   };
 
   return (
@@ -73,14 +78,20 @@ function Propensity_analysis() {
       <div className="ques">
         {currentIndex >= 1 && <Prev onClick={PrevQ} className="arrow" />}
         {questions[currentIndex]}
-        <Next onClick={NextQ} className="arrow" />
+        {currentIndex < questions.length - 1 && (
+          <Next onClick={NextQ} className="arrow" />
+        )}
       </div>
       <div className="answerdiv">
         <div className="answer" onClick={clickA}>
-          {answersA[currentIndex]}
+          {React.cloneElement(answersA[currentIndex], {
+            fill: selectedAnswers[currentIndex] === "A" ? "#B8B8B8" : "white",
+          })}
         </div>
         <div className="answer" onClick={clickB}>
-          {answersB[currentIndex]}
+          {React.cloneElement(answersB[currentIndex], {
+            fill: selectedAnswers[currentIndex] === "B" ? "#B8B8B8" : "white",
+          })}
         </div>
       </div>
     </div>
