@@ -78,7 +78,7 @@ function Propensity_analysis() {
       <div className="ques">
         {currentIndex >= 1 && <Prev onClick={PrevQ} className="arrow" />}
         {questions[currentIndex]}
-        {currentIndex < questions.length - 1 && (
+        {currentIndex < questions.length && (
           <Next onClick={NextQ} className="arrow" />
         )}
       </div>
