@@ -59,3 +59,5 @@ export { ReactComponent as Cancel } from "./icons/cancel.svg";
 export { ReactComponent as AddFolder } from "./icons/addFolder.svg";
 export { ReactComponent as Save2 } from "./icons/save2.svg";
 export { ReactComponent as Explain } from "./icons/explain.svg";
+export { ReactComponent as Explain2 } from "./icons/explain2.svg";
+export { ReactComponent as Study } from "./icons/study.svg";
