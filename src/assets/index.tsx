@@ -49,3 +49,7 @@ export { ReactComponent as Password } from "./icons/password.svg";
 export { ReactComponent as Save } from "./icons/save.svg";
 export { ReactComponent as More } from "./icons/viewmore.svg";
 export { ReactComponent as Line } from "./icons/line.svg";
+export { ReactComponent as Logo2 } from "./icons/logo2.svg";
+export { ReactComponent as Home2 } from "./icons/home2.svg";
+export { ReactComponent as Pencil2 } from "./icons/pencil2.svg";
+export { ReactComponent as Article } from "./icons/article.svg";

@@ -28,9 +28,9 @@ import ResultPage5 from "pages/Propensity_analysis/ResultPage5";
 import ResultPage6 from "pages/Propensity_analysis/ResultPage6";
 import ResultPage7 from "pages/Propensity_analysis/ResultPage7";
 import ResultPage8 from "pages/Propensity_analysis/ResultPage8";
-import Propensity_analysis from "pages/Propensity_analysis/Propensity_analysis";
+import PropensityAnalysis from "pages/Propensity_analysis/Propensity_analysis";
 import Profile from "pages/My_page/Profile";
-import ProfileUpload from "components/profileUpload";
+import ReadArticle from "pages/Article/Article";
 
 function App() {
   return (
@@ -57,7 +57,7 @@ function App() {
         <Route path="/main/main_4" element={<MAIN_4 />} />
         <Route path="/main/main_3" element={<MAIN_3 />} />
         <Route path="/main/main_2" element={<MAIN_2 />} />
-        <Route path="/analy" element={<Propensity_analysis />}></Route>
+        <Route path="/analy" element={<PropensityAnalysis />}></Route>
         <Route path="/analy/resultpage1" element={<ResultPage1 />}></Route>
         <Route path="/analy/resultpage2" element={<ResultPage2 />}></Route>
         <Route path="/analy/resultpage3" element={<ResultPage3 />}></Route>
@@ -67,7 +67,7 @@ function App() {
         <Route path="/analy/resultpage7" element={<ResultPage7 />}></Route>
         <Route path="/analy/resultpage8" element={<ResultPage8 />}></Route>
         <Route path="/mypage/profile" element={<Profile />}></Route>
-        <Route path="/test" element={<ProfileUpload />}></Route>
+        <Route path="/articles" element={<ReadArticle />}></Route>
       </Routes>
     </BrowserRouter>
   );
