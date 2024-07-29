@@ -10,7 +10,7 @@ import { Q7, A7, B7 } from "assets";
 import { Q8, A8, B8 } from "assets";
 import "./Propensity_analysis.css";
 
-function Propensity_analysis() {
+function PropensityAnalysis() {
   const questions = [
     <Q1 key="Q1" />,
     <Q2 key="Q2" />,
@@ -98,4 +98,4 @@ function Propensity_analysis() {
   );
 }
 
-export default Propensity_analysis;
+export default PropensityAnalysis;
