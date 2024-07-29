@@ -14,3 +14,8 @@ export const useGotoHome = () => {
   const navigate = useNavigate();
   return () => navigate("/main/articles");
 };
+
+export const useGotoScrap = () => {
+  const navigate = useNavigate();
+  return () => navigate("/scrap");
+};

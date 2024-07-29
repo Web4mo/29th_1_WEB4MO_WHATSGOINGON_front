@@ -16,6 +16,7 @@ interface ModalProps {
   isOpen: boolean;
   onRequestClose: () => void;
   onSave: (folderName: string) => void;
+  onRedirectOpen: () => void; // 새로 추가된 부분
 }
 
 interface Folders {
@@ -27,6 +28,7 @@ const SaveScrap: React.FC<ModalProps> = ({
   isOpen,
   onRequestClose,
   onSave,
+  onRedirectOpen, // 새로 추가된 부분
 }) => {
   const [folders, setFolders] = useState<Folders[]>([]);
   const [nextId, setNextId] = useState(1);
@@ -47,6 +49,7 @@ const SaveScrap: React.FC<ModalProps> = ({
   const handleSave = () => {
     folders.forEach((folder) => onSave(folder.name));
     onRequestClose();
+    onRedirectOpen(); // 새로 추가된 부분
   };
 
   return (

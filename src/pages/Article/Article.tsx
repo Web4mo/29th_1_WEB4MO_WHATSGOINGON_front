@@ -2,10 +2,12 @@ import React, { useState } from "react";
 import { Article, Home2, Logo2, Pencil2 } from "assets";
 import { useGotoHome } from "components/resultFunc";
 import SaveScrap from "components/saveScrap";
+import RedirectModal from "components/redirectModal";
 
 function ReadArticle() {
   const gotoHome = useGotoHome();
   const [modalIsOpen, setIsOpen] = useState(false);
+  const [isRedirectOpen, setIsRedirectOpen] = useState(false); // 새로 추가된 부분
 
   function openModal() {
     setIsOpen(true);
@@ -13,6 +15,15 @@ function ReadArticle() {
 
   function closeModal() {
     setIsOpen(false);
+  }
+
+  function handleRedirectOpen() {
+    setIsOpen(false);
+    setIsRedirectOpen(true);
+  }
+
+  function handleRedirectClose() {
+    setIsRedirectOpen(false);
   }
 
   function handleSave(folderName: string) {
@@ -63,6 +74,11 @@ function ReadArticle() {
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
         onSave={handleSave}
+        onRedirectOpen={handleRedirectOpen} // 새로 추가된 부분
+      />
+      <RedirectModal
+        isOpen={isRedirectOpen}
+        onRequestClose={handleRedirectClose}
       />
     </>
   );
