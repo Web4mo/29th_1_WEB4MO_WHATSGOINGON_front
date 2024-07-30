@@ -1,0 +1,11 @@
+.addfolder {
+  float: left;
+  margin-right: 15px;
+}
+
+.FolderAddButton {
+  width: 164px;
+  height: 54px;
+  border-radius: 10px;
+  border: 1px;
+}
