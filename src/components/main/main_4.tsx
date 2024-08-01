@@ -47,15 +47,12 @@ const MAIN_4: React.FC = () => {
       <div className="main-header">
         <img src={WGO} alt="WGO" className="main-wgo-image" />
         <div className="main-header-buttons">
-          <button
-            className="main-logout-button"
-            onClick={() => navigate("/logout")}
-          >
+          <button className="main-logout-button" onClick={() => navigate("/")}>
             Log Out
           </button>
           <button
             className="main-mypage-button"
-            onClick={() => navigate("/mypage")}
+            onClick={() => navigate("/mypage/profile")}
           >
             My Page
           </button>

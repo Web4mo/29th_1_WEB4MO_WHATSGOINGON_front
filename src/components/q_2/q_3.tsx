@@ -88,7 +88,7 @@ const Q_3: React.FC = () => {
   }, [showAlert]);
 
   const handleNext = () => {
-    navigate("/resulteunyoung");
+    navigate("/login");
   };
 
   const handlePrev = () => {

@@ -61,3 +61,5 @@ export { ReactComponent as Save2 } from "./icons/save2.svg";
 export { ReactComponent as Explain } from "./icons/explain.svg";
 export { ReactComponent as Explain2 } from "./icons/explain2.svg";
 export { ReactComponent as Study } from "./icons/study.svg";
+export { ReactComponent as SubInfo } from "./icons/info_button.svg";
+export { ReactComponent as MainCal } from "./icons/cal_button.svg";

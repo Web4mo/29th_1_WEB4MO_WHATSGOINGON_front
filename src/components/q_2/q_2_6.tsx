@@ -55,7 +55,7 @@ const Q_2_6: React.FC = () => {
     if (prevIndex >= 0) {
       navigate(paths[prevIndex], { state: { paths, index: prevIndex } });
     } else {
-      navigate("/");
+      navigate("/q_1/q_1");
     }
   };
 

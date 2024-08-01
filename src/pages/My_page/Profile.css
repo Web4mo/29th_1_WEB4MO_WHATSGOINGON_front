@@ -1,12 +1,12 @@
 .logo {
-    display: flex;
-    margin-top: 5vh;
-    margin-bottom: 10vh;
-    margin-left: 5vw;
-  }
+  display: flex;
+  margin-top: 5vh;
+  margin-bottom: 10vh;
+  margin-left: 5vw;
+}
 .back {
-    background-color: #D8D8D8;
-  }
+  background-color: #d8d8d8;
+}
 .rec {
   height: 100vh;
   margin-left: -40pt;
@@ -28,7 +28,7 @@
   margin-bottom: 140pt;
   width: 230pt;
 }
-.scrap{
+.scrap {
   margin-left: -230pt;
   margin-bottom: 80pt;
   width: 230pt;
@@ -55,4 +55,7 @@
 .ex {
   margin-bottom: 40pt;
   width: 60pt;
+}
+.clickable {
+  cursor: pointer;
 }

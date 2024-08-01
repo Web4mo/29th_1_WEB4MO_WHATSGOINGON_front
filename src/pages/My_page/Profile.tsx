@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useGotoRetest } from "components/resultFunc";
 import "./Profile.css";
 import ProfileUpload from "components/profileUpload";
@@ -9,6 +10,7 @@ import { Modify, Retest2 } from "assets";
 
 function Profile(): JSX.Element {
   const [modalIsOpen, setModalIsOpen] = useState(false);
+  const navigate = useNavigate();
 
   const openModal = () => {
     setModalIsOpen(true);
@@ -20,6 +22,14 @@ function Profile(): JSX.Element {
 
   const gotoRetest = useGotoRetest();
 
+  const handleCalendarClick = () => {
+    navigate("/cal/calendar");
+  };
+
+  const handleScrapClick = () => {
+    navigate("/scraplist");
+  };
+
   return (
     <div className="back">
       <div className="topdiv">
@@ -27,8 +37,8 @@ function Profile(): JSX.Element {
       </div>
       <Rectangle className="rec" />
       <Info className="info" />
-      <Calendar className="calen" />
-      <Scrap className="scrap" />
+      <Calendar className="calen clickable" onClick={handleCalendarClick} />
+      <Scrap className="scrap clickable" onClick={handleScrapClick} />
       <div className="userinfo">
         <div className="ex"> 이름 </div>
         <div className="ex"> 아이디 </div>

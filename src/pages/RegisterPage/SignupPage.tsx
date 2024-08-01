@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { SignupPage1, SignupPage2 } from "assets/export";
 import "./SignupPage.css";
 
@@ -10,12 +10,16 @@ function Signup() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [userType, setUserType] = useState("");
 
+  const navigate = useNavigate();
+
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
     if (password !== confirmPassword) {
       alert("비밀번호와 비밀번호 확인이 일치하지 않습니다.");
       return;
     }
+
+    navigate("/q_1/q_1"); // 관심 분야 질문 페이지로 연결
   };
 
   return (

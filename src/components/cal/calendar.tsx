@@ -3,9 +3,32 @@ import "./calendar.css";
 import { useNavigate } from "react-router-dom";
 import bookIcon from "../../assets/icons/book.svg";
 import book2Icon from "../../assets/icons/book_2.svg";
+import ProfileUpload from "components/profileUpload";
+import EditInfo from "components/editInfo";
+import { Rectangle } from "assets";
+import { SubInfo, MainCal, Scrap } from "assets";
 
 const CAL: React.FC = () => {
   const navigate = useNavigate();
+
+  const handleInfoClick = () => {
+    navigate("/mypage/profile");
+  };
+
+  const handleScrapClick = () => {
+    navigate("/scraplist");
+  };
+
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+
+  const openModal = () => {
+    setModalIsOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalIsOpen(false);
+  };
+
   const [currentDate, setCurrentDate] = useState(new Date());
   const [markedDate, setMarkedDate] = useState<Date | null>(null);
 
@@ -68,7 +91,7 @@ const CAL: React.FC = () => {
     }
 
     for (let i = 0; i < firstDayOfMonth; i++) {
-      days.push(<div key={`empty-${i}`} className="empty-day" />);
+      days.push(<div key={`empty-${i}`} className="cal-empty-day" />);
     }
 
     for (let day = 1; day <= daysInMonth; day++) {
@@ -79,7 +102,7 @@ const CAL: React.FC = () => {
       days.push(
         <div
           key={day}
-          className={`day ${isMarked ? "marked-day" : ""} ${isToday ? "today" : ""}`}
+          className={`cal-day ${isMarked ? "cal-marked-day" : ""} ${isToday ? "cal-today" : ""}`}
         >
           {day}
           {(isMarked || isToday) && (
@@ -98,7 +121,7 @@ const CAL: React.FC = () => {
       days.push(
         <div
           key={`empty-${firstDayOfMonth + daysInMonth + i}`}
-          className="empty-day"
+          className="cal-empty-day"
         />
       );
     }
@@ -132,45 +155,71 @@ const CAL: React.FC = () => {
   };
 
   return (
-    <div className="cal">
-      <div className="right">
-        <div className="button-container">
-          <button
-            className="cal-logout-button"
-            onClick={() => navigate("/logout")}
-          >
-            Log Out
-          </button>
-          <button className="cal-home-button" onClick={() => navigate("/main")}>
-            Home
-          </button>
-        </div>
-      </div>
-      <div className="left">
-        <div className="cal-today-button">
-          <h1 className="cal-heading1">Today</h1>
-          <button onClick={handleMarkToday}>읽었어요!</button>
-        </div>
-        <p className="cal-heading6">{formatDate(currentDate)}</p>
-      </div>
-      <div className="center">
-        <div className="calendar-controls">
-          <button onClick={handlePrevMonth} className="cal-button">
-            <p>&lt; 이전 달 보기</p>
-          </button>
-          <h1 className="cal-heading1">{months[currentDate.getMonth()]}</h1>
-          <button onClick={handleNextMonth} className="cal-button">
-            <p>다음 달 보기 &gt;</p>
-          </button>
-        </div>
-        <div className="calendar-grid-day">
-          {daysOfWeek.map((day, index) => (
-            <div key={index} className="day-of-week">
-              {day}
+    <div className="cal-back">
+      <ProfileUpload />
+      <Rectangle className="cal-rec" />
+      <SubInfo className="cal-info cal-clickable" onClick={handleInfoClick} />
+      <MainCal className="cal-calen" />
+      <Scrap className="cal-scrap cal-clickable" onClick={handleScrapClick} />
+      <ProfileUpload />
+      <div
+        style={{
+          marginTop: "40vh",
+          marginBottom: "10vh",
+          marginLeft: "47vw",
+        }}
+      >
+        <EditInfo isOpen={modalIsOpen} onRequestClose={closeModal} />
+        <div className="cal">
+          <div className="cal-right">
+            <div className="cal-button-container">
+              <button
+                className="cal-logout-button"
+                onClick={() => navigate("/")}
+              >
+                Log Out
+              </button>
+              <button
+                className="cal-home-button"
+                onClick={() => navigate("/main")}
+              >
+                Home
+              </button>
             </div>
-          ))}
+          </div>
+          <div className="calendar-box">
+            <div className="cal-left">
+              <div className="cal-today-button">
+                <h1 className="cal-heading1">Today</h1>
+                <button onClick={handleMarkToday}>읽었어요!</button>
+              </div>
+              <p className="cal-heading6">{formatDate(currentDate)}</p>
+            </div>
+            <div className="cal-center">
+              <div className="calendar-controls">
+                <button onClick={handlePrevMonth} className="cal-button">
+                  <p>&lt; 이전 달 보기</p>
+                </button>
+                <h1 className="cal-heading1">
+                  {months[currentDate.getMonth()]}
+                </h1>
+                <button onClick={handleNextMonth} className="cal-button">
+                  <p>다음 달 보기 &gt;</p>
+                </button>
+              </div>
+              <div className="calendar-grid-day">
+                {daysOfWeek.map((day, index) => (
+                  <div key={index} className="cal-day-of-week">
+                    {day}
+                  </div>
+                ))}
+              </div>
+              <div className="calendar-grid">
+                {generateCalendar(currentDate)}
+              </div>
+            </div>
+          </div>
         </div>
-        <div className="calendar-grid">{generateCalendar(currentDate)}</div>
       </div>
     </div>
   );
