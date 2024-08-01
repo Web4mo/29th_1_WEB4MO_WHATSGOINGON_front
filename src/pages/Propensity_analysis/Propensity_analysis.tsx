@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Logo, Prev, Next } from "assets";
 import { Q1, A1, B1 } from "assets";
 import { Q2, A2, B2 } from "assets";
@@ -48,11 +49,56 @@ function PropensityAnalysis() {
     setCurrentIndex((prevIndex) => (prevIndex > 0 ? prevIndex - 1 : prevIndex));
   };
 
+  const navigate = useNavigate();
+
   const NextQ = () => {
     if (selectedAnswers[currentIndex]) {
-      setCurrentIndex((prevIndex) =>
-        prevIndex < questions.length - 1 ? prevIndex + 1 : prevIndex
-      );
+      if (currentIndex < questions.length - 1) {
+        setCurrentIndex((prevIndex) => prevIndex + 1);
+      } else if (currentIndex === questions.length - 1) {
+        if (
+          selectedAnswers[1] !== null &&
+          selectedAnswers[2] !== null &&
+          selectedAnswers[3] !== null
+        ) {
+          const resultKey =
+            selectedAnswers[1] + selectedAnswers[2] + selectedAnswers[3];
+
+          let resultPage = "/analy/resultpage1";
+
+          switch (resultKey) {
+            case "AAA":
+              resultPage = "/analy/resultpage1";
+              break;
+            case "ABA":
+              resultPage = "/analy/resultpage2";
+              break;
+            case "AAB":
+              resultPage = "/analy/resultpage3";
+              break;
+            case "ABB":
+              resultPage = "/analy/resultpage4";
+              break;
+            case "BAA":
+              resultPage = "/analy/resultpage5";
+              break;
+            case "BAB":
+              resultPage = "/analy/resultpage6";
+              break;
+            case "BBA":
+              resultPage = "/analy/resultpage7";
+              break;
+            case "BBB":
+              resultPage = "/analy/resultpage8";
+              break;
+            default:
+              resultPage = "/analy/resultpage1";
+          }
+          navigate(resultPage);
+        } else {
+          alert("모든 질문에 응답했는지 확인하세요.");
+        }
+      }
     }
   };
 
