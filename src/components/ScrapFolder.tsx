@@ -64,7 +64,7 @@ const ScrapFolder: React.FC<ScrapFolderProps> = ({
   return (
     <div className="scrapList">
       <Link to={`/scraplist/${folder}`}>
-        <ScrapFolderImg />
+        <ScrapFolderImg style={{ width: 200, height: 200 }} />
       </Link>
       <div className="folderHeader">
         <div className="folderTitleWrapper">

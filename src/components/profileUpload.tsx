@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Camera } from "assets";
+import "../pages/ScrapPage/ScrapListPage.css";
 
 const ProfileUpload: React.FC = () => {
   const placeholderImage =
