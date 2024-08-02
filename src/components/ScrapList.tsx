@@ -34,6 +34,7 @@ const ScrapList: React.FC<ScrapListProps> = ({
       <select
         value={selectedFolder}
         onChange={(e) => onFolderSelect(e.target.value)}
+        className="folderSelect"
       >
         <option value="">모든 폴더 보기</option>
         {sortedFolders.map((folder) => (

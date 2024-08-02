@@ -1,11 +1,30 @@
-.addfolder {
-  float: left;
-  margin-right: 15px;
+.folderAddButton {
+  float: right;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
 }
-
-.FolderAddButton {
-  width: 164px;
-  height: 54px;
-  border-radius: 10px;
-  border: 1px;
+.scr-rec {
+  height: 100vh;
+  margin-left: -40pt;
+  margin-top: -65pt;
+  margin-top: 245px;
+}
+.scr-clickable {
+  cursor: pointer;
+}
+.scr-info {
+  margin-left: -300pt;
+  margin-bottom: 200pt;
+  width: 230pt;
+}
+.scr-calen {
+  margin-left: -230pt;
+  margin-bottom: 140pt;
+  width: 230pt;
+}
+.scr-scrap {
+  margin-left: -200pt;
+  margin-bottom: 80pt;
+  width: 230pt;
 }

@@ -34,3 +34,6 @@
 .sortButton:not(.active):hover {
   background: #d0d0d0; /* Slightly darker gray for hover on inactive buttons */
 }
+.scrap-list {
+  margin-left: 450px;
+}
