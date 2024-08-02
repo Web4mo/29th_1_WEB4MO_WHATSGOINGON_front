@@ -10,9 +10,17 @@ export const useGotoSignUp = () => {
   return () => navigate("/auth/sign-up");
 };
 
-export const useGotoHome = () => {
+export const useGotoHome2 = () => {
   const navigate = useNavigate();
-  return () => navigate("/main/articles");
+  return () => navigate("/main/main_2");
+};
+export const useGotoHome3 = () => {
+  const navigate = useNavigate();
+  return () => navigate("/main/main_3");
+};
+export const useGotoHome4 = () => {
+  const navigate = useNavigate();
+  return () => navigate("/main/main_4");
 };
 
 export const useGotoScrap = () => {

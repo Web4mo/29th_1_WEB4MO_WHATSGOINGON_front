@@ -1,7 +1,7 @@
 import React from "react";
 import Modal from "react-modal";
 import { Home2, Study, Explain2 } from "assets";
-import { useGotoHome, useGotoScrap } from "./resultFunc";
+import { useGotoHome2, useGotoScrap } from "./resultFunc";
 
 const customStyles = {
   content: {
@@ -21,7 +21,7 @@ const RedirectModal: React.FC<RedirectModalProps> = ({
   onRequestClose,
 }) => {
   const gotoScrap = useGotoScrap();
-  const gotoHome = useGotoHome();
+  const gotoHome = useGotoHome2();
   return (
     <Modal
       isOpen={isOpen}

@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Modal from "react-modal";
 import { Line } from "assets";
+import axios from "axios";
 
 const customStyles = {
   content: {
@@ -14,6 +15,27 @@ interface PasswordResetModalProps {
   isOpen: boolean;
   onRequestClose: () => void;
 }
+const updatePassword = async (
+  existingPassword: string,
+  password: string,
+  password2: string
+) => {
+  try {
+    const response = await axios.patch("/mypage/profile/edit", {
+      existingPassword,
+      password,
+      password2,
+    });
+
+    if (response.status === 200) {
+      console.log("Profile updated successfully:", response.data);
+    } else {
+      console.error("Failed to update profile:", response.data.message);
+    }
+  } catch (error) {
+    console.error("Error occurred while updating the profile:", error);
+  }
+};
 
 const PasswordResetModal: React.FC<PasswordResetModalProps> = ({
   isOpen,
@@ -25,6 +47,22 @@ const PasswordResetModal: React.FC<PasswordResetModalProps> = ({
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
+  useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+        const response = await axios.get("/mypage/profile");
+        if (response.status === 200 && response.data.success) {
+          setOldPassword(response.data.password);
+        } else {
+          console.error("Failed", response.data.message);
+        }
+      } catch (error) {
+        console.error("Eror occurred while fetching user data:", error);
+      }
+    };
+
+    fetchUserData();
+  }, []);
   const validatePassword = (password: string) => {
     const regex =
       /^(?=.*[a-zA-Z])(?=.*\d|.*[@$!%*?&])[A-Za-z\d@$!%*?&]{10,16}$/;
@@ -47,6 +85,7 @@ const PasswordResetModal: React.FC<PasswordResetModalProps> = ({
     }
 
     setErrorMessage(""); // 유효성 검사에 통과 시 에러 메시지를 초기화
+    updatePassword(oldPassword, newPassword, confirmPassword);
     onRequestClose(); // 유효성 검사가 성공 시 모달 close
   };
 

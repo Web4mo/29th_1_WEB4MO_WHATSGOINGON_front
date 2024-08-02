@@ -67,7 +67,7 @@ function App() {
         <Route path="/analy/resultpage7" element={<ResultPage7 />}></Route>
         <Route path="/analy/resultpage8" element={<ResultPage8 />}></Route>
         <Route path="/mypage/profile" element={<Profile />}></Route>
-        <Route path="/articles" element={<ReadArticle />}></Route>
+        <Route path="/articles/:articleId" element={<ReadArticle />}></Route>
       </Routes>
     </BrowserRouter>
   );
