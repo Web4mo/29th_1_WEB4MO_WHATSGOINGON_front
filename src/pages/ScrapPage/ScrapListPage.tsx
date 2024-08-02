@@ -1,13 +1,17 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import ScrapList from "../../components/ScrapList";
+import ScrapList from "components/ScrapList";
 import { useScrap } from "../../components/ScrapContext";
-import Add from "components/scrapPoppup/ScrapFolderAdd";
-import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
+import FolderAdd from "components/scrapPoppup/ScrapFolderAdd";
+import { ScrapFolderAdd5 } from "assets/export";
+import { Rectangle } from "assets";
+import { SubInfo, Calendar } from "assets";
+import { MainScrap } from "assets/export";
+import ProfileUpload from "components/profileUpload";
 import "./ScrapListPage.css";
 
 const ScrapListPage: React.FC = () => {
-  const { scraps, createFolder, updateScrapOrder } = useScrap();
+  const { scraps, createFolder } = useScrap();
   const [newFolder, setNewFolder] = useState("");
   const [selectedFolder, setSelectedFolder] = useState("");
   const [showAdd, setShowAdd] = useState(false);
@@ -19,7 +23,7 @@ const ScrapListPage: React.FC = () => {
 
   const handleFolderSelect = (folder: string) => {
     setSelectedFolder(folder);
-    navigate(`/scrap/${folder}`);
+    navigate(`/scraplist/${folder}`);
   };
 
   const handleConfirmAdd = () => {
@@ -31,22 +35,39 @@ const ScrapListPage: React.FC = () => {
     setShowAdd(false);
   };
 
-  const onDragEnd = (result: any) => {
-    if (!result.destination) return;
+  const handleInfoClick = () => {
+    navigate("/mypage/profile");
+  };
 
-    const { source, destination } = result;
-    if (!selectedFolder) return;
-
-    const items = Array.from(scraps[selectedFolder].items);
-    const [movedItem] = items.splice(source.index, 1);
-    items.splice(destination.index, 0, movedItem);
-
-    updateScrapOrder(selectedFolder, items);
+  const handleCalendarClick = () => {
+    navigate("/cal/calendar");
   };
 
   return (
-    <div style={{ display: "flex" }}>
-      <div style={{ flexGrow: 1 }}>
+    <div>
+      <Rectangle className="scr-rec" />
+      <SubInfo className="scr-info scr-clickable" onClick={handleInfoClick} />
+      <Calendar
+        className="scr-calen scr-clickable"
+        onClick={handleCalendarClick}
+      />
+      <MainScrap className="scr-scrap" />
+      <div className="profile-upload">
+        <ProfileUpload />
+      </div>
+      <div className="scrap-list">
+        <div className="cal-button-container">
+          <button className="cal-logout-button" onClick={() => navigate("/")}>
+            Log Out
+          </button>
+          <button className="cal-home-button" onClick={() => navigate("/main")}>
+            Home
+          </button>
+        </div>
+        <br />
+        <button className="folderAddButton" onClick={handleAddClick}>
+          <ScrapFolderAdd5 />
+        </button>
         <ScrapList
           selectedFolder={selectedFolder}
           onFolderSelect={handleFolderSelect}
@@ -54,40 +75,21 @@ const ScrapListPage: React.FC = () => {
         />
       </div>
       {showAdd && (
-        <Add
+        <FolderAdd
           isOpen={showAdd}
           onClose={handleCancelAdd}
           onConfirm={handleConfirmAdd}
           setNewFolder={setNewFolder}
         />
       )}
-      <button className="FolderAddButton" onClick={handleAddClick}>
-        폴더 추가하기
-      </button>
       {selectedFolder && (
-        <DragDropContext onDragEnd={onDragEnd}>
-          <Droppable droppableId="scrap-list">
-            {(provided) => (
-              <div {...provided.droppableProps} ref={provided.innerRef}>
-                {scraps[selectedFolder].items.map((scrap, index) => (
-                  <Draggable key={scrap} draggableId={scrap} index={index}>
-                    {(provided) => (
-                      <div
-                        ref={provided.innerRef}
-                        {...provided.draggableProps}
-                        {...provided.dragHandleProps}
-                        className="scrapItem"
-                      >
-                        {scrap}
-                      </div>
-                    )}
-                  </Draggable>
-                ))}
-                {provided.placeholder}
-              </div>
-            )}
-          </Droppable>
-        </DragDropContext>
+        <div>
+          {scraps[selectedFolder].items.map((scrap, index) => (
+            <div key={index} className="scrapItem">
+              {scrap}
+            </div>
+          ))}
+        </div>
       )}
     </div>
   );
