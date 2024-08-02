@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   background-color: #e9e9e9;
-  margin-top: -950px;
+  margin-top: -760px;
   margin-right: 200px;
 }
 
@@ -29,7 +29,7 @@
   align-items: center;
   display: flex;
   flex-direction: column;
-  background-color: #e9e9e9;
+  background-color: transparent;
   width: 120%;
 }
 
@@ -274,4 +274,8 @@
   margin-top: 5vh;
   margin-bottom: 10vh;
   margin-left: 5vw;
+}
+
+.cal-profile {
+  margin-top: -690px;
 }

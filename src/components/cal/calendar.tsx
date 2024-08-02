@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./calendar.css";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 import bookIcon from "../../assets/icons/book.svg";
 import book2Icon from "../../assets/icons/book_2.svg";
 import ProfileUpload from "components/profileUpload";
@@ -141,8 +142,24 @@ const CAL: React.FC = () => {
     );
   };
 
-  const handleMarkToday = () => {
-    setMarkedDate(new Date());
+  const handleMarkToday = async () => {
+    const today = new Date();
+    setMarkedDate(today);
+
+    try {
+      // 날짜 "YYYY/MM/DD" 형식으로 변환
+      const formattedDate = `${today.getFullYear()}/${today.getMonth() + 1}/${today.getDate()}`;
+
+      // PUT 요청을 서버로 전송
+      await axios.put("url 넣기", {
+        attendDate: formattedDate,
+      });
+
+      alert("오늘 날짜가 성공적으로 기록되었습니다.");
+    } catch (error) {
+      console.error("Failed to mark date:", error);
+      alert("날짜 기록에 실패했습니다.");
+    }
   };
 
   const formatDate = (date: Date) => {
@@ -161,7 +178,10 @@ const CAL: React.FC = () => {
       <SubInfo className="cal-info cal-clickable" onClick={handleInfoClick} />
       <MainCal className="cal-calen" />
       <Scrap className="cal-scrap cal-clickable" onClick={handleScrapClick} />
-      <ProfileUpload />
+      <div className="cal-profile">
+        <ProfileUpload />
+      </div>
+
       <div
         style={{
           marginTop: "40vh",
@@ -169,7 +189,6 @@ const CAL: React.FC = () => {
           marginLeft: "47vw",
         }}
       >
-        <EditInfo isOpen={modalIsOpen} onRequestClose={closeModal} />
         <div className="cal">
           <div className="cal-right">
             <div className="cal-button-container">
