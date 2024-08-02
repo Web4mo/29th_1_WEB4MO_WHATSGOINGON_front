@@ -17,6 +17,7 @@ export { ReactComponent as IconDelete } from "./iconDelete.svg";
 export { ReactComponent as ScrapFolderDelete1 } from "./scrap/scrapFolderDelete1.svg";
 export { ReactComponent as ScrapFolderDelete2 } from "./scrap/scrapFolderDelete2.svg";
 export { ReactComponent as ScrapFolderDelete3 } from "./scrap/scrapFolderDelete3.svg";
+export { ReactComponent as ScrapFolderDelete4 } from "./scrap/scrapFolderDelete4.svg";
 export { ReactComponent as Logo } from "./logo.svg";
 export { ReactComponent as Logo1 } from "./logo1.svg";
 export { ReactComponent as Logo2 } from "./logo2.svg";
