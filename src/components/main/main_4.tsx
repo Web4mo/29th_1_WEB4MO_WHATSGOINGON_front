@@ -38,9 +38,41 @@ const newsIcons = [
   require("../../assets/icons/news/news_24.svg").default,
 ];
 
+const topics = [
+  { name: "경향신문", path: "https://www.khan.co.kr/" },
+  { name: "국민일보", path: "https://m.kmib.co.kr/" },
+  { name: "내일신문", path: "https://www.naeil.com/" },
+  { name: "동아일보", path: "https://www.donga.com/" },
+  { name: "문화일보", path: "https://www.munhwa.com/" },
+  { name: "서울신문", path: "https://www.seoul.co.kr/" },
+  { name: "세계일보", path: "https://m.segye.com/" },
+  { name: "연합뉴스", path: "https://www.yna.co.kr/" },
+  { name: "중앙일보", path: "https://www.joongang.co.kr/" },
+  { name: "한겨레", path: "https://www.hani.co.kr/" },
+  { name: "한국일보", path: "https://www.hankookilbo.com/" },
+  { name: "매일경제", path: "https://www.mk.co.kr/" },
+  { name: "머니투데이", path: "https://www.mt.co.kr/" },
+  { name: "서울경제", path: "https://m.sedaily.com/" },
+  { name: "아시아경제", path: "https://www.asiae.co.kr/" },
+  { name: "아주경제", path: "https://www.ajunews.com/" },
+  { name: "파이낸셜뉴스", path: "https://www.fnnews.com/" },
+  { name: "한국경제", path: "https://www.hankyung.com/" },
+  { name: "헤럴드경제", path: "https://biz.heraldcorp.com/" },
+  { name: "디지털타임스", path: "https://m.dt.co.kr/" },
+  { name: "전자신문", path: "https://m.etnews.com/" },
+  { name: "뉴욕타임스", path: "https://www.nytimes.com/" },
+  { name: "월스트리트저널", path: "https://www.wsj.com/" },
+  { name: "워싱턴포스트", path: "https://www.washingtonpost.com/" },
+  { name: "데일리안", path: "https://www.dailian.co.kr/" },
+];
+
 const MAIN_4: React.FC = () => {
   const navigate = useNavigate();
   const newsIndices: string[] = ["2", "5", "23"];
+
+  const handleButtonClick = (path: string) => {
+    window.location.href = path;
+  };
 
   return (
     <div className="main-container">
@@ -75,11 +107,12 @@ const MAIN_4: React.FC = () => {
                 newsIndices.map((index) => {
                   const iconIndex = parseInt(index, 10);
                   if (iconIndex >= 0 && iconIndex < newsIcons.length) {
+                    const topic = topics[iconIndex];
                     return (
                       <button
                         key={index}
                         className="main-news-button"
-                        onClick={() => navigate("/news")}
+                        onClick={() => handleButtonClick(topic.path)}
                       >
                         <img
                           src={newsIcons[iconIndex]}
