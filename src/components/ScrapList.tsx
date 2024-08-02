@@ -31,18 +31,6 @@ const ScrapList: React.FC<ScrapListProps> = ({
 
   return (
     <div>
-      <select
-        value={selectedFolder}
-        onChange={(e) => onFolderSelect(e.target.value)}
-        className="folderSelect"
-      >
-        <option value="">모든 폴더 보기</option>
-        {sortedFolders.map((folder) => (
-          <option key={folder} value={folder}>
-            {folder}
-          </option>
-        ))}
-      </select>
       <div className="sortSwitch">
         <button
           className={`sortButton ${sortBy === "이름 순" ? "active" : ""}`}
@@ -57,6 +45,19 @@ const ScrapList: React.FC<ScrapListProps> = ({
           날짜 순
         </button>
       </div>
+      <br />
+      <select
+        value={selectedFolder}
+        onChange={(e) => onFolderSelect(e.target.value)}
+        className="folderSelect"
+      >
+        <option value="">모든 폴더 보기</option>
+        {sortedFolders.map((folder) => (
+          <option key={folder} value={folder}>
+            {folder}
+          </option>
+        ))}
+      </select>
       {selectedFolder ? (
         <ScrapFolder
           folder={selectedFolder}

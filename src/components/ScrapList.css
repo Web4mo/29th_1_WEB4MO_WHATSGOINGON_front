@@ -1,8 +1,7 @@
 .grid-container {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 3px;
-  padding: 50px;
+  padding: 30px;
 }
 .grid-item {
   display: flex;
@@ -12,7 +11,7 @@
 }
 .sortSwitch {
   display: flex;
-  gap: 5px; /* Add space between buttons */
+  gap: 10px; /* Add space between buttons */
 }
 
 .sortButton {
@@ -36,4 +35,12 @@
 }
 .scrap-list {
   margin-left: 450px;
+}
+.folderSelect {
+  width: 120px;
+  height: 40px;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #f4f4f4;
 }

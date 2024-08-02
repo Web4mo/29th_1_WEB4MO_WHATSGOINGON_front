@@ -6,25 +6,31 @@
 }
 .scr-rec {
   height: 100vh;
-  margin-left: -40pt;
-  margin-top: -65pt;
-  margin-top: 245px;
+  margin-left: -65pt;
 }
 .scr-clickable {
   cursor: pointer;
 }
 .scr-info {
   margin-left: -300pt;
-  margin-bottom: 200pt;
+  margin-bottom: 150pt;
   width: 230pt;
 }
 .scr-calen {
   margin-left: -230pt;
-  margin-bottom: 140pt;
+  margin-bottom: 90pt;
   width: 230pt;
 }
 .scr-scrap {
   margin-left: -200pt;
-  margin-bottom: 80pt;
+  margin-bottom: 30pt;
   width: 230pt;
+}
+.scrap-list {
+  margin-top: -370px;
+  margin-left: 450px;
+}
+.profile-upload {
+  margin-top: -590px;
+  margin-left: -40px;
 }

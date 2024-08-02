@@ -45,7 +45,6 @@ const ScrapListPage: React.FC = () => {
 
   return (
     <div>
-      <ProfileUpload />
       <Rectangle className="scr-rec" />
       <SubInfo className="scr-info scr-clickable" onClick={handleInfoClick} />
       <Calendar
@@ -53,8 +52,19 @@ const ScrapListPage: React.FC = () => {
         onClick={handleCalendarClick}
       />
       <MainScrap className="scr-scrap" />
-      <ProfileUpload />
-      <div className="scrapList">
+      <div className="profile-upload">
+        <ProfileUpload />
+      </div>
+      <div className="scrap-list">
+        <div className="cal-button-container">
+          <button className="cal-logout-button" onClick={() => navigate("/")}>
+            Log Out
+          </button>
+          <button className="cal-home-button" onClick={() => navigate("/main")}>
+            Home
+          </button>
+        </div>
+        <br />
         <button className="folderAddButton" onClick={handleAddClick}>
           <ScrapFolderAdd5 />
         </button>
