@@ -63,6 +63,12 @@ function ReadArticle() {
     }
   };
 
+  const handleArticleClick = () => {
+    if (articleData.articleLink) {
+      window.open(articleData.articleLink, "_blank");
+    }
+  };
+
   function openModal() {
     setIsOpen(true);
   }
@@ -102,6 +108,7 @@ function ReadArticle() {
 
       <Article
         style={{ width: "150px", marginLeft: "10vw", marginBottom: "-20px" }}
+        onClick={handleArticleClick}
       />
       <Pencil2
         onClick={openModal}
@@ -121,7 +128,9 @@ function ReadArticle() {
           borderRadius: "10px",
         }}
       >
-        <p style={{ padding: "20px" }}>{articleData.contents}</p>
+        <p style={{ padding: "20px", fontSize: "20px" }}>
+          {articleData.contents}
+        </p>
       </div>
       <SaveScrap
         isOpen={modalIsOpen}
