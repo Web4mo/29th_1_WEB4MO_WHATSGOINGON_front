@@ -18,13 +18,13 @@ function Profile(): JSX.Element {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const navigate = useNavigate();
   const [userData, setUserData] = useState({
-    name: "",
-    id: "",
-    userType: "",
-    assignDate: "",
-    interests: [],
-    keywords: [],
-    media: [],
+    name: "김솔룩",
+    id: "solux",
+    userType: "호기심왕 도파민형",
+    assignDate: "2024-08-04",
+    interests: ["IT과학", "정치", "스포츠"],
+    keywords: ["국방", "양궁", "스포츠"],
+    media: ["서울신문", "한겨레", "한국일보"],
     profileImg: "",
   });
 
@@ -56,6 +56,16 @@ function Profile(): JSX.Element {
 
   const closeModal = () => {
     setModalIsOpen(false);
+    setUserData((prevData) => ({
+      ...prevData,
+      name: "김솔룩",
+      id: "solux",
+      userType: "호기심왕 도파민형",
+      assignDate: "2024-08-04",
+      interests: ["정치", "사회", "경제", "스포츠"],
+      keywords: ["국방", "교육", "환경", "부동산", "축구", "야구"],
+      media: ["서울신문", "한겨레", "한국일보"],
+    }));
   };
 
   const handleCalendarClick = () => {
@@ -67,13 +77,14 @@ function Profile(): JSX.Element {
   };
 
   const handleHomeClick = () => {
-    if (userData.keywords.length === 2) {
-      gotoHome2();
-    } else if (userData.keywords.length === 3) {
-      gotoHome3();
-    } else {
-      gotoHome4();
-    }
+    //   if (userData.keywords.length === 2) {
+    //     gotoHome2();
+    //   } else if (userData.keywords.length === 3) {
+    //     gotoHome3();
+    //   } else {
+    //     gotoHome4();
+    //   }
+    navigate("/main/main_3_edit");
   };
 
   return (

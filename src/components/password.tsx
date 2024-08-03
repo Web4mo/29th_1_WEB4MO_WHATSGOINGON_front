@@ -63,21 +63,21 @@ const PasswordResetModal: React.FC<PasswordResetModalProps> = ({
 
     fetchUserData();
   }, []);
-  const validatePassword = (password: string) => {
-    const regex =
-      /^(?=.*[a-zA-Z])(?=.*\d|.*[@$!%*?&])[A-Za-z\d@$!%*?&]{10,16}$/;
-    return regex.test(password);
-  };
+  // const validatePassword = (password: string) => {
+  //   const regex =
+  //     /^(?=.*[a-zA-Z])(?=.*\d|.*[@$!%*?&])[A-Za-z\d@$!%*?&]{10,16}$/;
+  //   return regex.test(password);
+  // };
 
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
 
-    if (!validatePassword(newPassword)) {
-      setErrorMessage(
-        "영문 대소문자, 숫자, 특수문자 중 2가지 이상 조합으로 10자에서 16자 사이로 입력해주세요."
-      );
-      return;
-    }
+    // if (!validatePassword(newPassword)) {
+    //   setErrorMessage(
+    //     "영문 대소문자, 숫자, 특수문자 중 2가지 이상 조합으로 10자에서 16자 사이로 입력해주세요."
+    //   );
+    //   return;
+    // }
 
     if (newPassword !== confirmPassword) {
       setErrorMessage("새 비밀번호와 일치하지 않습니다.");
