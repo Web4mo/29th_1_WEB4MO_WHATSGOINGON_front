@@ -84,15 +84,16 @@ const interestsTopics = [
 ];
 
 const dummyUserData = {
-  name: "강해린",
-  id: "Babycattttt00",
-  userType: "자유로운 영혼의 도파민형",
-  assignDate: "2024-04-21",
-  interests: ["사회", "경제", "세계"],
-  keywords: ["교육", "건강정보", "뮤직"],
-  media: ["세계일보", "파이낸셜뉴스", "한국일보"],
-  profileImg: "프로필 이미지 url",
-  password: "existing password",
+  name: "김솔룩",
+  id: "solux",
+  userType: "호기심왕 도파민형",
+  assignDate: "2024-08-04",
+  interests: ["사회", "생활 문화", "연예"],
+  keywords: ["교육", "패션, 뷰티", "뮤직"],
+  media: ["서울신문", "한겨레", "한국일보"],
+  profileImg:
+    "https://i.namu.wiki/i/Bge3xnYd4kRe_IKbm2uqxlhQJij2SngwNssjpjaOyOqoRhQlNwLrR2ZiK-JWJ2b99RGcSxDaZ2UCI7fiv4IDDQ.webp",
+  password: "password",
 };
 
 const dummyHeadlines = [
