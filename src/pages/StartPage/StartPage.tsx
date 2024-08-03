@@ -16,7 +16,7 @@ function StartPage() {
       <br />
       <br />
       <br />
-      <Link to="/login">
+      <Link to="/analy">
         <StartPage1 />
       </Link>
       <br />

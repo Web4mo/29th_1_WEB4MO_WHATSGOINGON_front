@@ -32,7 +32,7 @@ function Signup() {
 
       if (response.data.success) {
         alert("회원가입에 성공했습니다.");
-        navigate("/login");
+        navigate("/q_1/q_1");
       } else {
         setError(response.data.message);
       }
