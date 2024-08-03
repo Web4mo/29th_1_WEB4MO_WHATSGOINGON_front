@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import "./q_2.css";
+import axios from "axios";
 import WGO from "../../assets/icons/whats_going_on.svg";
 
 const Q_2_7: React.FC = () => {
@@ -35,7 +36,7 @@ const Q_2_7: React.FC = () => {
     });
   };
 
-  const handleNext = () => {
+  const handleNext = async () => {
     if (selectedTopics.length === 0) {
       alert("1개 이상 선택해야 합니다.");
     } else {
@@ -43,7 +44,16 @@ const Q_2_7: React.FC = () => {
       if (nextIndex < paths.length) {
         navigate(paths[nextIndex], { state: { paths, index: nextIndex } });
       } else {
-        navigate("/q_2/q_3");
+        // 마지막 페이지인 경우 서버에 PATCH 요청 보내기
+        try {
+          await axios.patch("url 넣기", {
+            keywords: selectedTopics, // 선택된 토픽을 관심 키워드로 추가
+          });
+          navigate("/q_2/q_3");
+        } catch (error) {
+          console.error("Failed to update interests:", error);
+          alert("관심 분야 업데이트에 실패했습니다.");
+        }
       }
     }
   };

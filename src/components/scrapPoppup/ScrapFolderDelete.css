@@ -27,6 +27,20 @@
   margin-top: 20px;
 }
 
+.saveModalContent {
+  position: relative;
+  background: white;
+  padding: 40px;
+  border-radius: 8px;
+  width: 300px;
+  height: 230px;
+}
+
+.saveModalButtons {
+  display: flex;
+  justify-content: flex-end;
+}
+
 .deleteConfirmButton,
 .deleteCancelButton {
   border: none;

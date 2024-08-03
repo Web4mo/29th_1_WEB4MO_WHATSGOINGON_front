@@ -24,17 +24,19 @@
   float: left;
 }
 .addFolderText {
-  padding-right: 300px;
+  font-size: x-large;
+  padding-right: 270px;
   margin-top: 10px;
 }
 .addFolderLabel {
   float: left;
+  font-size: large;
   margin-bottom: 15px;
 }
 .addFolderInput {
   background-color: #ececec;
   width: 500px;
-  height: 30px;
+  height: 40px;
   border: none;
   border-radius: 10px;
 }
@@ -42,6 +44,7 @@
 .addButton {
   border: none;
   background-color: transparent;
+  margin-top: 25px;
 }
 
 .addModalButtons {

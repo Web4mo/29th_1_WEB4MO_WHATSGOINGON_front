@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 import "./q_1.css";
 import WGO from "../../assets/icons/whats_going_on.svg";
 import Q10 from "../../assets/icons/q_1_0.svg";
@@ -14,7 +15,7 @@ import Q17 from "../../assets/icons/q_1_7.svg";
 const Q1: React.FC = () => {
   const navigate = useNavigate();
   const [selectedTopics, setSelectedTopics] = useState<
-    { num: string; path: string }[]
+    { num: string; name: string; path: string }[]
   >([]);
 
   const topics = [
@@ -28,7 +29,11 @@ const Q1: React.FC = () => {
     { num: "7", name: "연예", icon: Q17, path: "/q_2/q_2_7" },
   ];
 
-  const handleTopicClick = (topic: { num: string; path: string }) => {
+  const handleTopicClick = (topic: {
+    num: string;
+    name: string;
+    path: string;
+  }) => {
     setSelectedTopics((prevSelectedTopics) => {
       if (prevSelectedTopics.some((t) => t.num === topic.num)) {
         return prevSelectedTopics.filter((t) => t.num !== topic.num); // 이미 선택된 경우 선택 해제
@@ -42,9 +47,37 @@ const Q1: React.FC = () => {
 
   const handleNextClick = () => {
     if (selectedTopics.length >= 2 && selectedTopics.length <= 4) {
-      navigate(selectedTopics[0].path, {
-        state: { paths: selectedTopics.map((topic) => topic.path), index: 0 },
-      });
+      // 선택한 주제의 이름을 배열로 변환
+      const interests = selectedTopics.map((topic) => topic.name);
+
+      // PATCH 요청
+      const updateInterests = async () => {
+        try {
+          await axios.patch(
+            "url 넣기",
+            {
+              interests: interests,
+            },
+            {
+              headers: {
+                "Content-Type": "application/json",
+              },
+            }
+          );
+          // 요청 성공 후 다음 페이지로 이동
+          navigate(selectedTopics[0].path, {
+            state: {
+              paths: selectedTopics.map((topic) => topic.path),
+              index: 0,
+            },
+          });
+        } catch (error) {
+          console.error("Error updating interests:", error);
+          alert("서버에 요청하는 도중 오류가 발생했습니다.");
+        }
+      };
+
+      updateInterests();
     } else {
       alert("2-4개의 관심 분야를 선택해 주세요.");
     }
