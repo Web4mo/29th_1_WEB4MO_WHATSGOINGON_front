@@ -60,7 +60,10 @@ const ScrapListPage: React.FC = () => {
           <button className="cal-logout-button" onClick={() => navigate("/")}>
             Log Out
           </button>
-          <button className="cal-home-button" onClick={() => navigate("/main")}>
+          <button
+            className="cal-home-button"
+            onClick={() => navigate("/main/main_3")}
+          >
             Home
           </button>
         </div>
