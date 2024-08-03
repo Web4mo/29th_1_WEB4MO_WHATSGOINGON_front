@@ -58,6 +58,7 @@
   border: none;
   background-color: transparent;
   margin-bottom: 10px;
+  cursor: pointer;
 }
 
 .article-meta {
@@ -105,10 +106,12 @@
   position: absolute;
   margin-top: -65px;
   margin-left: 550px;
+  cursor: pointer;
 }
 .ai-summary-button {
   border: none;
   background-color: transparent;
+  cursor: pointer;
 }
 
 .ai-summary-content {

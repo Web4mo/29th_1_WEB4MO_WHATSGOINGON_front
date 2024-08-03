@@ -1,43 +1,54 @@
 import React, { useState } from "react";
-import ScrapFolder from "./ScrapFolder";
+import ScrapFile from "./ScrapFile";
 import "./ScrapList.css";
 import { IconSwitch } from "assets/export";
 
-const dummyFolder = {
-  folderId: 1,
-  folderName: "기본 폴더",
-  lastModifiedAt: "2024-08-04 05:17",
-  createdDate: new Date("2024-08-04 05:17"),
-  items: ["Item 1", "Item 2", "Item 3"],
-};
+const dummyNewsData = [
+  {
+    scrapId: 1,
+    articleId: 101,
+    previewImg: "https://via.placeholder.com/150",
+    title: "우크라이나, 크름반도...",
+    date: "2024.08.04",
+  },
+  // 추가 뉴스 아이템들...
+];
+
+interface NewsItem {
+  scrapId: number;
+  articleId: number;
+  previewImg: string;
+  title: string;
+  date: string;
+}
 
 interface ScrapData {
   createdDate: Date;
-  items: string[];
+  items: NewsItem[];
 }
 
 interface ScrapListProps {
-  selectedFolder: string;
   onFolderSelect: (folder: string) => void;
-  scraps: { [key: string]: ScrapData };
 }
 
-const ScrapList: React.FC<ScrapListProps> = ({
-  selectedFolder,
-  onFolderSelect,
-  scraps,
-}) => {
+const ScrapList2: React.FC<ScrapListProps> = ({ onFolderSelect }) => {
   const [sortBy, setSortBy] = useState<"이름 순" | "날짜 순">("이름 순");
 
-  // Adding dummy folder to scraps
-  const initialScraps = {
+  const dummyFolder = {
+    folderId: 1,
+    folderName: "기본 폴더",
+    createdDate: new Date("2024-08-04 05:17"),
+    items: dummyNewsData,
+  };
+
+  const initialScraps: { [key: string]: ScrapData } = {
     [dummyFolder.folderName]: {
       createdDate: dummyFolder.createdDate,
       items: dummyFolder.items,
     },
-    ...scraps,
   };
 
+  // 폴더 정렬
   const sortedFolders = Object.keys(initialScraps).sort((a, b) => {
     if (sortBy === "이름 순") {
       return a.localeCompare(b);
@@ -69,7 +80,7 @@ const ScrapList: React.FC<ScrapListProps> = ({
       </div>
       <br />
       <select
-        value={selectedFolder}
+        value={""}
         onChange={(e) => onFolderSelect(e.target.value)}
         className="folderSelect"
       >
@@ -80,25 +91,20 @@ const ScrapList: React.FC<ScrapListProps> = ({
           </option>
         ))}
       </select>
-      {selectedFolder ? (
-        <ScrapFolder
-          folder={selectedFolder}
-          createdDate={initialScraps[selectedFolder]?.createdDate}
-        />
-      ) : (
-        <div className="grid-container">
-          {sortedFolders.map((folder) => (
-            <div key={folder} className="grid-item">
-              <ScrapFolder
-                folder={folder}
-                createdDate={initialScraps[folder].createdDate}
-              />
-            </div>
-          ))}
-        </div>
-      )}
+      <br />
+      <div className="grid-container">
+        {sortedFolders.map((folder) => (
+          <React.Fragment>
+            {initialScraps[folder].items.map((newsItem) => (
+              <div className="grid-item">
+                <ScrapFile news={[newsItem]} />
+              </div>
+            ))}
+          </React.Fragment>
+        ))}
+      </div>
     </div>
   );
 };
 
-export default ScrapList;
+export default ScrapList2;

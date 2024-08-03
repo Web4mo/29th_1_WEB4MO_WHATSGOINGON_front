@@ -34,3 +34,30 @@
   margin-top: -590px;
   margin-left: -40px;
 }
+.cal-logout-button,
+.cal-home-button {
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  border: none;
+  font-size: 14px;
+  width: 125px;
+  margin-top: 5px;
+}
+
+.cal-logout-button {
+  background-color: white;
+  height: 35px;
+}
+
+.cal-home-button {
+  border: 1px solid black;
+}
+.scr-button-container {
+  display: flex;
+  gap: 14px;
+  flex-direction: row-reverse;
+  flex-wrap: wrap;
+  align-items: stretch;
+  align-content: flex-end;
+}

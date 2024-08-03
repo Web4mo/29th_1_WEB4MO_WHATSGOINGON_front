@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
 import { SignupPage1, SignupPage2 } from "assets/export";
 import "./SignupPage.css";
 
@@ -10,7 +9,6 @@ function Signup() {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [userType, setUserType] = useState("");
-  const [error, setError] = useState("");
 
   const navigate = useNavigate();
 
@@ -19,26 +17,6 @@ function Signup() {
     if (password !== confirmPassword) {
       alert("비밀번호와 비밀번호 확인이 일치하지 않습니다.");
       return;
-    }
-
-    try {
-      const response = await axios.post("/auth/signup", {
-        name: name,
-        loginId: username,
-        password: password,
-        confirmPassword: confirmPassword,
-        userType: userType,
-      });
-
-      if (response.data.success) {
-        alert("회원가입에 성공했습니다.");
-        navigate("/q_1/q_1");
-      } else {
-        setError(response.data.message);
-      }
-    } catch (error) {
-      console.error("There was an error!", error);
-      setError("회원가입에 실패했습니다. 다시 시도해주세요.");
     }
   };
 
@@ -122,13 +100,16 @@ function Signup() {
       <br />
       <br />
       <br />
-      <button type="submit" className="signupButton">
+      <button
+        type="submit"
+        className="signupButton"
+        onClick={() => navigate("/q_1/q_1")}
+      >
         <SignupPage1 />
       </button>
       <Link to="/" className="signupButton">
         <SignupPage2 />
       </Link>
-      {error && <p className="error">{error}</p>}
     </form>
   );
 }
