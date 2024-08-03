@@ -27,7 +27,7 @@ function Signup() {
         loginId: username,
         password: password,
         confirmPassword: confirmPassword,
-        type: userType,
+        userType: userType,
       });
 
       if (response.data.success) {
