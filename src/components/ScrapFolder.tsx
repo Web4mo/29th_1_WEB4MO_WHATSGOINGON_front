@@ -7,19 +7,13 @@ import "./ScrapFolder.css";
 
 interface ScrapFolderProps {
   folder: string;
-  news: string[];
   createdDate?: Date;
 }
 
-const ScrapFolder: React.FC<ScrapFolderProps> = ({
-  folder,
-  news,
-  createdDate,
-}) => {
-  const { deleteFolder } = useScrap();
+const ScrapFolder: React.FC<ScrapFolderProps> = ({ folder, createdDate }) => {
+  const { deleteFolder, renameFolder } = useScrap();
   const [showEdit, setShowEdit] = useState(false);
   const [newFolderName, setNewFolderName] = useState(folder);
-  const [currentFolderName, setCurrentFolderName] = useState(folder);
   const [showDelete, setShowDelete] = useState(false);
 
   const popupRef = useRef<HTMLDivElement>(null);
@@ -29,8 +23,9 @@ const ScrapFolder: React.FC<ScrapFolderProps> = ({
   };
 
   const handleRenameSubmit = (e: React.FormEvent) => {
+    // 추가한 부분
     e.preventDefault();
-    setCurrentFolderName(newFolderName);
+    renameFolder(folder, newFolderName);
     setShowEdit(false);
   };
 
@@ -68,7 +63,7 @@ const ScrapFolder: React.FC<ScrapFolderProps> = ({
       </Link>
       <div className="folderHeader">
         <div className="folderTitleWrapper">
-          <h3 className="folderName">{currentFolderName}</h3>
+          <h3 className="folderName">{newFolderName}</h3>
           <IconArrow onClick={handleEdit} className="folderEditIcon" />
         </div>
         {createdDate && (
@@ -77,6 +72,8 @@ const ScrapFolder: React.FC<ScrapFolderProps> = ({
         {showEdit && (
           <div ref={popupRef} className="popupMenu">
             <form onSubmit={handleRenameSubmit} className="renameForm">
+              {" "}
+              {/* 추가한 부분 */}
               <div className="inputWrapper">
                 <input
                   type="text"
@@ -101,11 +98,6 @@ const ScrapFolder: React.FC<ScrapFolderProps> = ({
           </div>
         )}
       </div>
-      <ul>
-        {news.map((newsItem, index) => (
-          <li key={index}>{newsItem}</li>
-        ))}
-      </ul>
       <FolderDelete
         isOpen={showDelete}
         onClose={handleCancelDelete}

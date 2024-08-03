@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import { Article, Home2, Logo2, Pencil2 } from "assets";
-import { useGotoHome } from "components/resultFunc";
+import { useGotoHome2 } from "components/resultFunc";
+// 오류나서 잠깐 바꿧다!!!!!!!!!!!!!!!! 기억하기
 import SaveScrap from "components/saveScrap";
 import RedirectModal from "components/redirectModal";
 
 function ReadArticle() {
-  const gotoHome = useGotoHome();
+  const gotoHome = useGotoHome2();
   const [modalIsOpen, setIsOpen] = useState(false);
   const [isRedirectOpen, setIsRedirectOpen] = useState(false); // 새로 추가된 부분
 

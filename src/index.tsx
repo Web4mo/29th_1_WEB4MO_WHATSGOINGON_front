@@ -4,6 +4,7 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { ScrapProvider } from "./components/ScrapContext";
+import { ScrapProvider2 } from "./components/ScrapContext2";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -11,7 +12,9 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <ScrapProvider>
-      <App />
+      <ScrapProvider2>
+        <App />
+      </ScrapProvider2>
     </ScrapProvider>
   </React.StrictMode>
 );

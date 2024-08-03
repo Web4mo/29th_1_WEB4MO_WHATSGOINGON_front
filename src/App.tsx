@@ -32,6 +32,7 @@ import ResultPage8 from "pages/Propensity_analysis/ResultPage8";
 import PropensityAnalysis from "pages/Propensity_analysis/Propensity_analysis";
 import Profile from "pages/My_page/Profile";
 import ReadArticle from "pages/Article/Article";
+import ScrapFilePage from "pages/ScrapPage/ScrapFilePage";
 
 function App() {
   return (
@@ -41,7 +42,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/scrap" element={<ScrapPage />} />
-        <Route path="/scrap/:folder" element={<ScrapPage />} />
+        <Route path="/scraplist/:folder" element={<ScrapFilePage />} />
         <Route path="/scraplist" element={<ScrapListPage />} />
         <Route path="/q_1/q_1" element={<Q_1 />} />
         <Route path="/q_2/q_2_0" element={<Q_2_0 />} />
