@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import {useEffect, useState} from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import StartPage from "pages/StartPage/StartPage";
 import Login from "pages/RegisterPage/LoginPage";
@@ -34,6 +35,14 @@ import Profile from "pages/My_page/Profile";
 import ReadArticle from "pages/Article/Article";
 
 function App() {
+  const [hello, setHello] = useState('');
+
+    useEffect(() => {
+        axios.get('/api/test')
+            .then((res) => {
+                setHello(res.data);
+            })
+    }, []);
   return (
     <BrowserRouter>
       <Routes>
