@@ -24,7 +24,7 @@ function Login() {
         // Save tokens to local storage or any other state management solution
         localStorage.setItem("accessToken", response.data.accessToken);
         localStorage.setItem("refreshToken", response.data.refreshToken);
-        navigate("/main"); // Redirect to a different page upon successful login
+        navigate("/main/main_3"); // Redirect to a different page upon successful login
       } else {
         setError(response.data.message);
       }
