@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import { IconArrow, ScrapFolderImg, IconDelete } from "assets/export";
+import { IconArrow, ScrapFolderImg, ScrapFolderDelete4 } from "assets/export";
 import { Link } from "react-router-dom";
 import { useScrap } from "./ScrapContext";
 import FolderDelete from "./scrapPoppup/ScrapFolderDelete";
@@ -93,8 +93,9 @@ const ScrapFolder: React.FC<ScrapFolderProps> = ({
                 onClick={handleDeleteClick}
                 className="deleteButton"
               >
-                <IconDelete className="deleteIcon" />
-                <p className="deleteText">폴더 삭제하기</p>
+                <p className="deleteText">
+                  <ScrapFolderDelete4 style={{ width: 150 }} />
+                </p>
               </button>
             </form>
           </div>
