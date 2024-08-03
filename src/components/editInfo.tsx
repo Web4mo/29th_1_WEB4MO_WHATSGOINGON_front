@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Modal from "react-modal";
 import { Password, Save, More } from "assets";
 import PasswordResetModal from "./password";
+import axios from "axios";
 
 const customStyles = {
   content: {
@@ -14,6 +15,29 @@ const customStyles = {
 interface InterestKeywords {
   [key: string]: string[];
 }
+const updateInfo = async (
+  userType: string,
+  interests: string[],
+  keywords: string[],
+  media: string[]
+) => {
+  try {
+    const response = await axios.patch("/mypage/profile/edit", {
+      userType,
+      interests,
+      keywords,
+      media,
+    });
+
+    if (response.status === 200) {
+      console.log("Profile updated successfully:", response.data);
+    } else {
+      console.error("Failed to update profile:", response.data.message);
+    }
+  } catch (error) {
+    console.error("Error occurred while updating the profile:", error);
+  }
+};
 
 const interestKeywords: InterestKeywords = {
   정치: ["국회/정당", "북한", "국방/외교", "행정"],
@@ -218,6 +242,12 @@ const EditInfo: React.FC<PopUpProps> = ({ isOpen, onRequestClose }) => {
     }
 
     setErrorMessage(""); // error message
+    updateInfo(
+      userType,
+      interests,
+      Object.values(selectedKeywords).flat(),
+      media
+    ); // patch
     onRequestClose(); // Close modal
   };
 
