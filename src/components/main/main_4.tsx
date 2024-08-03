@@ -199,7 +199,12 @@ const MAIN_4: React.FC = () => {
         <img src={TITLE} alt="TITLE" className="main-title-image" />
         <div className="main-content-container">
           <div className="main-left-box">
-            <p className="main-left-text-main">{dummyMainNews.title}</p>
+            <p
+              className="main-left-text-main"
+              onClick={() => handleHeadlineClick(dummyMainNews.articleId)}
+            >
+              {dummyMainNews.title}
+            </p>
             <p className="main-left-text">
               {dummyMainNews.date}
               <img
@@ -213,6 +218,7 @@ const MAIN_4: React.FC = () => {
               src={dummyMainNews.previewImg}
               alt="Example"
               className="main-left-image"
+              onClick={() => handleHeadlineClick(dummyMainNews.articleId)}
             />
           </div>
           <div className="main-right-box">
