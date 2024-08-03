@@ -19,6 +19,7 @@ import Q_3 from "./components/q_2/q_3";
 import CAL from "./components/cal/calendar";
 import MAIN_4 from "./components/main/main_4";
 import MAIN_3 from "./components/main/main_3";
+import MAIN_3_EDIT from "./components/main/main_3_edit";
 import MAIN_2 from "./components/main/main_2";
 import TestResult from "./components/q_2/test_result";
 import ResultPage1 from "pages/Propensity_analysis/ResultPage1";
@@ -57,6 +58,7 @@ function App() {
         <Route path="/q_2/test_result" element={<TestResult />} />
         <Route path="/main/main_4" element={<MAIN_4 />} />
         <Route path="/main/main_3" element={<MAIN_3 />} />
+        <Route path="/main/main_3_edit" element={<MAIN_3_EDIT />} />
         <Route path="/main/main_2" element={<MAIN_2 />} />
         <Route path="/analy" element={<PropensityAnalysis />}></Route>
         <Route path="/analy/resultpage1" element={<ResultPage1 />}></Route>

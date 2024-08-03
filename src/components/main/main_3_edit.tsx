@@ -84,57 +84,35 @@ const interestsTopics = [
 ];
 
 const dummyUserData = {
-  name: "김솔룩",
-  id: "solux",
-  userType: "호기심왕 도파민형",
-  assignDate: "2024-08-04",
-  interests: ["IT과학", "정치", "스포츠"],
-  keywords: ["국방", "양궁", "스포츠"],
-  media: ["서울신문", "한겨레", "한국일보"],
-  profileImg:
-    "https://i.namu.wiki/i/U_Z88LvTS9NYuuKFRvLXJ0xa0h4h7sARaA-lP-FaPYWHophKDSUTGWtjGNtv198ixmw_SPx2MYb8EqN9upOm3rYdKXvdk24bP3FHi3TfAHdYLOdmpQGyYF5EYn4uYQFxC0n4BFKiB5dVzs0nqHlL3g.webp",
-  password: "password",
+  name: "강해린",
+  id: "Babycattttt00",
+  userType: "자유로운 영혼의 도파민형",
+  assignDate: "2024-04-21",
+  interests: ["사회", "연예", "세계", "정치"],
+  keywords: ["교육", "건강정보", "뮤직"],
+  media: ["세계일보", "한겨레", "전자신문"],
+  profileImg: "프로필 이미지 url",
+  password: "existing password",
 };
 
 const dummyHeadlines = [
-  {
-    articleId: 97,
-    title: "세계은행 “한국경제 성장, 중진국 함정 해결 필독서”",
-    url: "/article/97",
-  },
-  {
-    articleId: 98,
-    title: "‘5차 중동전’ 벌어지나… 외교 파장에 철저히 대비해야",
-    url: "/article/98",
-  },
-  {
-    articleId: 102,
-    title: "[속보] 뉴욕증시, 경제지표 악화 우려에 다우 1.2%↓",
-    url: "/article/102",
-  },
-  {
-    articleId: 117,
-    title: "문신 빼곡 그녀…2030 표심 잡을 '해리스의 비밀병기'",
-    url: "/article/117",
-  },
-  {
-    articleId: 121,
-    title: "“연예인 부부가 350만원 먹튀”…청담동 미용실 사장 주장",
-    url: "/article/121",
-  },
+  { articleId: 1, title: "예시 기사 제목1" },
+  { articleId: 2, title: "예시 기사 제목2" },
+  { articleId: 3, title: "예시 기사 제목3" },
+  { articleId: 4, title: "예시 기사 제목4" },
+  { articleId: 5, title: "예시 기사 제목5" },
 ];
 
 const dummyMainNews = {
-  articleId: 2,
-  title: "역대 대통령 휴가 뒤 '깜짝 카드'…MB 땐 9명 개각, 尹의 구상은?",
-  url: "/article/2",
+  articleId: 1,
+  title: "예시 기사 제목",
   previewImg:
-    "https://imgnews.pstatic.net/image/025/2024/08/04/0003377628_001_20240804052700383.jpg?type=w647",
-  date: "2024-08-04",
+    "https://i.namu.wiki/i/U_Z88LvTS9NYuuKFRvLXJ0xa0h4h7sARaA-lP-FaPYWHophKDSUTGWtjGNtv198ixmw_SPx2MYb8EqN9upOm3rYdKXvdk24bP3FHi3TfAHdYLOdmpQGyYF5EYn4uYQFxC0n4BFKiB5dVzs0nqHlL3g.webp",
+  date: "2024-06-27",
   scrap: false,
 };
 
-const MAIN_3: React.FC = () => {
+const MAIN_3_EDIT: React.FC = () => {
   const [userData, setUserData] = useState(dummyUserData); // 사용자 데이터 상태
   const [filteredTopics, setFilteredTopics] = useState<any[]>([]); // 필터링된 토픽 상태
   const navigate = useNavigate();
@@ -287,32 +265,11 @@ const MAIN_3: React.FC = () => {
         </div>
         <div className="main-table-container">
           <div className="main-table-row main-table-header">
-            <div className="main-table-cell-3">
-              <div className="main-table-text-container">
-                <img
-                  src={Q13}
-                  alt="아이티과학"
-                  className="main-question-icon"
-                />
-                <p className="main-table-text">IT/Science +</p>
-              </div>
-            </div>
-            <div className="main-table-cell-3">
-              <div className="main-table-text-container">
-                <img src={Q10} alt="정치" className="main-question-icon" />
-                <p className="main-table-text">Politics +</p>
-              </div>
-            </div>
-            <div className="main-table-cell-3">
-              <div className="main-table-text-container">
-                <img src={Q16} alt="스포츠" className="main-question-icon" />
-                <p className="main-table-text">Sports +</p>
-              </div>
-            </div>
+            {renderInterestTopics()}
           </div>
           {[...Array(3)].map((_, index) => (
-            <div className="main-table-row-3" key={index}>
-              <div className="main-table-cell-3">
+            <div className="main-table-row" key={index}>
+              <div className="main-table-cell">
                 <img
                   src={IMG}
                   alt="Example"
@@ -329,7 +286,7 @@ const MAIN_3: React.FC = () => {
                   />
                 </p>
               </div>
-              <div className="main-table-cell-3">
+              <div className="main-table-cell">
                 <img
                   src={IMG}
                   alt="Example"
@@ -346,7 +303,24 @@ const MAIN_3: React.FC = () => {
                   />
                 </p>
               </div>
-              <div className="main-table-cell-3">
+              <div className="main-table-cell">
+                <img
+                  src={IMG}
+                  alt="Example"
+                  className="main-fixed-size-image"
+                />
+                <p className="main-table-text">안녕하세요 기사 제목입니다.</p>
+                <p className="main-table-subtext">
+                  2024.05.06
+                  <img
+                    src={PENCIL}
+                    alt="Edit"
+                    className="main-pencil-icon"
+                    onClick={openModal}
+                  />
+                </p>
+              </div>
+              <div className="main-table-cell">
                 <img
                   src={IMG}
                   alt="Example"
@@ -381,4 +355,4 @@ const MAIN_3: React.FC = () => {
   );
 };
 
-export default MAIN_3;
+export default MAIN_3_EDIT;
