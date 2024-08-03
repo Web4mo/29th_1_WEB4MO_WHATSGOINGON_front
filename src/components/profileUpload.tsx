@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { Camera } from "assets";
+
 import axios from "axios";
+import "../pages/ScrapPage/ScrapListPage.css";
+
 
 interface ProfileUploadProps {
   profileImg?: string | null;

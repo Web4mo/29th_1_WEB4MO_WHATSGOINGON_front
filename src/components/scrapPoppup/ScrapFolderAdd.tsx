@@ -13,7 +13,7 @@ interface AddPopupProps {
   setNewFolder: React.Dispatch<React.SetStateAction<string>>;
 }
 
-const Add: React.FC<AddPopupProps> = ({
+const FolderAdd: React.FC<AddPopupProps> = ({
   isOpen,
   onClose,
   onConfirm,
@@ -52,4 +52,4 @@ const Add: React.FC<AddPopupProps> = ({
   );
 };
 
-export default Add;
+export default FolderAdd;
