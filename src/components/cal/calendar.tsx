@@ -34,8 +34,12 @@ const CAL: React.FC = () => {
   const [markedDate, setMarkedDate] = useState<Date | null>(null);
 
   const attendanceDates = [
-    new Date(currentDate.getFullYear(), 6, 1),
-    new Date(currentDate.getFullYear(), 6, 3),
+    new Date(currentDate.getFullYear(), 6, 10),
+    new Date(currentDate.getFullYear(), 6, 13),
+    new Date(currentDate.getFullYear(), 6, 22),
+    new Date(currentDate.getFullYear(), 6, 23),
+    new Date(currentDate.getFullYear(), 6, 25),
+    new Date(currentDate.getFullYear(), 7, 1),
   ];
 
   const daysOfWeek = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
@@ -145,21 +149,6 @@ const CAL: React.FC = () => {
   const handleMarkToday = async () => {
     const today = new Date();
     setMarkedDate(today);
-
-    try {
-      // 날짜 "YYYY/MM/DD" 형식으로 변환
-      const formattedDate = `${today.getFullYear()}/${today.getMonth() + 1}/${today.getDate()}`;
-
-      // PUT 요청을 서버로 전송
-      await axios.put("url 넣기", {
-        attendDate: formattedDate,
-      });
-
-      alert("오늘 날짜가 성공적으로 기록되었습니다.");
-    } catch (error) {
-      console.error("Failed to mark date:", error);
-      alert("날짜 기록에 실패했습니다.");
-    }
   };
 
   const formatDate = (date: Date) => {
@@ -200,7 +189,7 @@ const CAL: React.FC = () => {
               </button>
               <button
                 className="cal-home-button"
-                onClick={() => navigate("/main")}
+                onClick={() => navigate("/main/main_3")}
               >
                 Home
               </button>
