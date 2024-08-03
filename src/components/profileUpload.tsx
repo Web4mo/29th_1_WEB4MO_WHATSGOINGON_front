@@ -4,14 +4,13 @@ import { Camera } from "assets";
 import axios from "axios";
 import "../pages/ScrapPage/ScrapListPage.css";
 
-
 interface ProfileUploadProps {
   profileImg?: string | null;
 }
 
 const ProfileUpload: React.FC<ProfileUploadProps> = ({ profileImg }) => {
   const placeholderImage =
-    "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDIwMCAyMDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHJlY3Qgd2lkdGg9IjIwMCIgaGVpZ2h0PSIyMDAiIGZpbGw9IiNlMWUxZTEiIC8+PHRleHQgeD0iMTAwIiB5PSIxMDAiIGZvbnQtc2l6ZT0iMjBweCIgZmlsbD0iI2RkZCIgdGV4dC1hbmNob3I9Im1pZGRsZSI+SW1hZ2U8L3RleHQ+PC9zdmc+";
+    "https://i.namu.wiki/i/Bge3xnYd4kRe_IKbm2uqxlhQJij2SngwNssjpjaOyOqoRhQlNwLrR2ZiK-JWJ2b99RGcSxDaZ2UCI7fiv4IDDQ.webp";
   const [profilePicture, setProfilePicture] = useState<string | null>(
     profileImg || null
   );

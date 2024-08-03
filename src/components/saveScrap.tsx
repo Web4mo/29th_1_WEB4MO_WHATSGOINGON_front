@@ -88,6 +88,29 @@ const SaveScrap: React.FC<ModalProps> = ({
       <Explain />
 
       <div>
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            marginBottom: "10px",
+            width: "250px",
+            height: "40px",
+            borderRadius: "5px",
+            backgroundColor: "#ECECEC",
+            marginLeft: "70px",
+          }}
+        >
+          <Folder2 style={{ marginLeft: "10px", marginTop: "2px" }} />
+          <input
+            type="text"
+            value="기본폴더"
+            style={{
+              marginLeft: "10px",
+              backgroundColor: "#ECECEC",
+              border: "none",
+            }}
+          />
+        </div>
         {folders.map((folder) => (
           <div
             key={folder.id}
