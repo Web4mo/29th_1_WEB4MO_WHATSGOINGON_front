@@ -12,7 +12,10 @@ import axios from "axios";
 
 function ReadArticle() {
   const { articleId } = useParams(); // URL에서 articleId 추출
-  const gotoHome = useGotoHome2();
+  const gotoHome2 = useGotoHome2();
+  const gotoHome3 = useGotoHome3();
+  const gotoHome4 = useGotoHome4();
+  const [num, setNum] = useState<number | null>(null);
   const [modalIsOpen, setIsOpen] = useState(false);
   const [isRedirectOpen, setIsRedirectOpen] = useState(false);
   const [articleData, setArticleData] = useState({
@@ -29,8 +32,15 @@ function ReadArticle() {
     const fetchUserData = async () => {
       try {
         const response = await axios.get(`/articles?articleId=${articleId}`);
-        if (response.status === 200 && response.data.success) {
+        const response2 = await axios.get("/mypage/profile");
+        if (
+          response.status === 200 &&
+          response.data.success &&
+          response2.status === 200 &&
+          response2.data.success
+        ) {
           setArticleData(response.data.data);
+          setNum(response.data.keywords.length);
         } else {
           console.error("Failed", response.data.message);
         }
@@ -43,6 +53,15 @@ function ReadArticle() {
       fetchUserData();
     }
   });
+  const handleHomeClick = () => {
+    if (num === 2) {
+      gotoHome2();
+    } else if (num === 3) {
+      gotoHome3();
+    } else {
+      gotoHome4();
+    }
+  };
 
   function openModal() {
     setIsOpen(true);
@@ -70,7 +89,7 @@ function ReadArticle() {
       <div style={{ backgroundColor: "white", height: "100px" }}>
         <Logo2 style={{ marginLeft: "30vw", marginTop: "15px" }} />
         <Home2
-          onClick={gotoHome}
+          onClick={handleHomeClick}
           style={{ width: "150px", marginLeft: "300px", marginTop: "20px" }}
         />
       </div>
