@@ -7,7 +7,7 @@ export const useGotoRetest = () => {
 
 export const useGotoSignUp = () => {
   const navigate = useNavigate();
-  return () => navigate("/auth/sign-up");
+  return () => navigate("/signup");
 };
 
 export const useGotoHome2 = () => {
