@@ -42,7 +42,9 @@
   border-radius: 10px;
   margin-left: 100pt;
   width: 250pt;
-  height: 30pt;
+  height: 25pt;
+  padding-left: 30px;
+  padding-top: 10px;
 }
 .divp {
   margin-top: -415pt;

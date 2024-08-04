@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./calendar.css";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 import bookIcon from "../../assets/icons/book.svg";
 import book2Icon from "../../assets/icons/book_2.svg";
 import ProfileUpload from "components/profileUpload";
@@ -33,8 +34,12 @@ const CAL: React.FC = () => {
   const [markedDate, setMarkedDate] = useState<Date | null>(null);
 
   const attendanceDates = [
-    new Date(currentDate.getFullYear(), 6, 1),
-    new Date(currentDate.getFullYear(), 6, 3),
+    new Date(currentDate.getFullYear(), 6, 10),
+    new Date(currentDate.getFullYear(), 6, 13),
+    new Date(currentDate.getFullYear(), 6, 22),
+    new Date(currentDate.getFullYear(), 6, 23),
+    new Date(currentDate.getFullYear(), 6, 25),
+    new Date(currentDate.getFullYear(), 7, 1),
   ];
 
   const daysOfWeek = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
@@ -141,8 +146,9 @@ const CAL: React.FC = () => {
     );
   };
 
-  const handleMarkToday = () => {
-    setMarkedDate(new Date());
+  const handleMarkToday = async () => {
+    const today = new Date();
+    setMarkedDate(today);
   };
 
   const formatDate = (date: Date) => {
@@ -161,7 +167,10 @@ const CAL: React.FC = () => {
       <SubInfo className="cal-info cal-clickable" onClick={handleInfoClick} />
       <MainCal className="cal-calen" />
       <Scrap className="cal-scrap cal-clickable" onClick={handleScrapClick} />
-      <ProfileUpload />
+      <div className="cal-profile">
+        <ProfileUpload />
+      </div>
+
       <div
         style={{
           marginTop: "40vh",
@@ -169,7 +178,6 @@ const CAL: React.FC = () => {
           marginLeft: "47vw",
         }}
       >
-        <EditInfo isOpen={modalIsOpen} onRequestClose={closeModal} />
         <div className="cal">
           <div className="cal-right">
             <div className="cal-button-container">
@@ -181,7 +189,7 @@ const CAL: React.FC = () => {
               </button>
               <button
                 className="cal-home-button"
-                onClick={() => navigate("/main")}
+                onClick={() => navigate("/main/main_3")}
               >
                 Home
               </button>

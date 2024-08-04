@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Logo2 } from "assets/export";
+import { Icon1, Logo2 } from "assets/export";
 import { useNavigate } from "react-router-dom";
 import FileSave from "components/scrapPoppup/ScrapFileSave";
 import FileDelete from "components/scrapPoppup/ScrapFileDelete";
@@ -11,11 +11,42 @@ import {
 } from "assets/export";
 import "./ScrapPage.css";
 
+const dummyScrap = {
+  title: "우크라이나, 크름반도 배치 러시아 킬로급 잠수함 격침",
+  category: "정치-국방",
+  date: "2024.08.04",
+  newsLink: "https://n.news.naver.com/mnews/article/003/0012707823?sid=104",
+  scrap: true,
+  img: "example url",
+  contents: `[서울=뉴시스]이재준 기자 = 우크라이나군은 3일(현지시각) 러시아가 합병한 크름반도에 배치한 잠수함을 격침했다고 발표했다.
+
+BBC와 폴리티코 등에 따르면 우크라이나군 참모본부는 페이스북을 통해 크름반도 세바스토폴항을 전날 공격해 러시아 흑해함대 소속 B-237 잠수함을 침몰시켰다고 밝혔다.
+
+참모본부는 격침한 러시아 잠수함(Rostov-on-Don)이 작년 9월 우크라이나군의 미사일 공격을 받아 파손됐다가 수리한 것이라고 전했다.
+
+킬로급인 잠수함은 2014년 취역했으며 순항미사일을 발사할 수 있는 능력을 갖추고 있는데 우크라이나군 미사일을 맞고 바다로 가라앉았다고 한다.
+
+잠수함은 보수 후 시험항해를 하던 중에 우크라이나군이 발사한 미사일에 맞았다고 참모본부는 소개했다.
+
+침몰 잠수함은 칼리버 순항미사일을 쏘아올릴 수 있는 흑해함대 잠수함 4척 가운데 하나다.
+
+이에 대해 러시아 국방부는 아직 확인하지 않고 있다. B-237 잠수함은 건조비가 3억 달러(약 4085억원)에 이른다.
+
+참모본부는 B-237 잠수함을 격침함으로써 러시아 함대가 흑해의 우크라이나 수역에서는 더이상 안전한 곳이 없다는 사실을 다시 한번 입증했다고 강조했다.
+
+또한 참모본부는 이번 공격으로 크름반도에 있는 방공 미사일 시스템도 파괴했다고 설명했다.
+
+참모본부는 크름반도로 날아오는 미사일의 요격을 맡은 S-400 방공 시스템 4개를 무력화했다고 확인했다.`,
+  aiSummary:
+    "우크라이나군이 크림반도 세바스토폴항에서 러시아 흑해함대 소속 B-237 잠수함을 미사일로 공격해 침몰시켰으며, 이 잠수함은 칼리버 순항미사일을 발사할 수 있는 킬로급 잠수함으로, 수리 후 시험 항해 중이었다고 밝혔습니다. ",
+};
+
 const ScrapPage: React.FC = () => {
   const [memo, setMemo] = useState<string>("");
   const [isEditing, setIsEditing] = useState<boolean>(false);
   const [showDelete, setShowDelete] = useState<boolean>(false);
   const [showSaveCheck, setShowSaveCheck] = useState<boolean>(false);
+  const [showSummary, setShowSummary] = useState<boolean>(false);
   const navigate = useNavigate();
 
   const handleMemoChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -36,12 +67,13 @@ const ScrapPage: React.FC = () => {
   };
 
   const handleConfirmHome = () => {
-    navigate("/main/main_4");
+    navigate("/main/main_3");
   };
 
   const handleCancelSave = () => {
     setShowSaveCheck(false);
   };
+
   const handleDeleteClick = () => {
     setShowDelete(true);
   };
@@ -55,8 +87,14 @@ const ScrapPage: React.FC = () => {
     setShowDelete(false);
   };
 
-  const articleContent =
-    "[뉴스투데이] ◀ 앵커 ▶ 디올백 수수 의혹과 도이치모터스 주가조작 의혹과 관련해 김건희 여사가 그제 현직대통령의 영부인으로는 처음으로 검찰 조사를 받았습니다. 그런데 검찰청사가 아닌 제3의 장소에서 조사했는데, 장소는 김 여사 측에서 정한 것으로 알려졌습니다. 조희원 기자입니다. ◀ 리포트 ▶ 김건희 여사가 그제 피의자 신분으로 검찰 조사를 받았습니다. 조사 장소는 검찰청사가 아니라 제3의 장소였습니다. 검찰은 김 여사의 출석을 요구했고, 협의 결과 경호와 안전상 이유로 서울중앙지검 관할 내 정부 보안청사에서 조사했다고 밝혔습니다. 대통령 경호처가 관리하는 서울 종로구 창성동 건물인 것으로 파악됐습니다. 김 여사 쪽에서 조사 하루 전인 금요일 오후 결정해 검찰에 알려준 것으로 전해졌습니다. 검찰은 도이치모터스 주가조작 연루 의혹과 디올백 수수 의혹 두 사건을 모두 조사했습니다. 그제 낮 1시30분부터 어제 새벽 1시20분까지 11시간 50분 조사했는데, 주가조작 의혹을 먼저 7시간쯤 하고, 디올백은 뒤이어 5시간 한 것으로 알려졌습니다. 조사는 주임검사들이 직접 했고, 수사를 지휘하는 차장검사들이 검찰청사에서 대기했습니다. 김 여사가 주가조작 가담 혐의로 고발된 것은 4년 전인 2020년 4월입니다. 그동안 대면 조사는 한 차례도 없었습니다. 명품백 수수 의혹은 지난해 12월 유튜브매체 '서울의소리'가 김 여사가 3백만 원 상당의 디올백을 받았다며 윤석열 대통령 부부를 청탁금지법 위반 등의 혐의로 고발하면서 불거졌습니다. 대통령 재임 중 영부인이 검찰 대면 조사를 받은 건 이번이 처음입니다. 2004년에는 전두환 비자금과 관련해 이순자 여사가, 2009년에는 노무현 전 대통령 부인 권양숙 여사가 참고인으로 비공개 검찰 소환 조사를 받긴 했지만, 모두 퇴임 후였습니다. 2012년에는 김윤옥 여사가 이명박 전 대통령 재임 중 내곡동 특검팀의 조사를 받았지만 서면조사였습니다. 김건희 여사 조사와 관련해 대통령실 관계자는 '수사 중 사안을 언급하는 건 적절치 않다'며 '김 여사 법률대리인이 입장을 낼 것'이라고 했습니다. 김 여사 대리인은 '성실히 조사에 임해 사실 그대로 진술했다'는 한 줄짜리 입장을 냈습니다. MBC뉴스 조희원입니다.";
+  const handleSummaryClick = () => {
+    setShowSummary(!showSummary);
+  };
+
+  const handleViewArticleClick = () => {
+    // newsLink로 이동
+    window.open(dummyScrap.newsLink, "_blank");
+  };
 
   return (
     <div className="scrap-container">
@@ -73,15 +111,19 @@ const ScrapPage: React.FC = () => {
       </div>
       <main className="scrap-content">
         <div className="article-section">
-          <button className="view-article-button">
+          <button
+            className="view-article-button"
+            onClick={handleViewArticleClick}
+          >
             <ScrapFileArticle style={{ width: 130 }} />
           </button>
           <div className="article-meta">
-            <span className="category">(기사 분야)</span>
-            <span className="date">(기사 작성 날짜)</span>
+            <Icon1 />
+            <span className="category">{dummyScrap.category}</span>
+            <span className="date">{dummyScrap.date}</span>
           </div>
           <div className="article-content">
-            <p className="article-detail">{articleContent}</p>
+            <p className="article-detail">{dummyScrap.contents}</p>
           </div>
         </div>
         <div className="memo-section">
@@ -103,10 +145,12 @@ const ScrapPage: React.FC = () => {
               </button>
             )}
           </div>
-          <button className="ai-summary-button">
+          <button className="ai-summary-button" onClick={handleSummaryClick}>
             <ScrapSummarize style={{ width: 130 }} />
           </button>
-          <div className="ai-summary-content">(요약된 내용)</div>
+          {showSummary && (
+            <div className="ai-summary-content">{dummyScrap.aiSummary}</div>
+          )}
         </div>
       </main>
       <FileDelete

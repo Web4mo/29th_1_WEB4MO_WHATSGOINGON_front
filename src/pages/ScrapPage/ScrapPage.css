@@ -58,12 +58,17 @@
   border: none;
   background-color: transparent;
   margin-bottom: 10px;
+  cursor: pointer;
 }
 
 .article-meta {
+  margin-top: 17px;
+  float: right;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   margin-bottom: 20px;
+  align-items: center;
+  gap: 10px;
 }
 
 .article-content {
@@ -72,7 +77,8 @@
   border-radius: 8px;
 }
 
-.article-detail {
+.article-detail,
+.ai-summary-content {
   letter-spacing: 1px;
   line-height: 25px;
 }
@@ -100,10 +106,12 @@
   position: absolute;
   margin-top: -65px;
   margin-left: 550px;
+  cursor: pointer;
 }
 .ai-summary-button {
   border: none;
   background-color: transparent;
+  cursor: pointer;
 }
 
 .ai-summary-content {

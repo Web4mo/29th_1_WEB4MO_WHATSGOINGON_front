@@ -7,6 +7,7 @@ import { ScrapFolderAdd5 } from "assets/export";
 import { Rectangle } from "assets";
 import { SubInfo, Calendar } from "assets";
 import { MainScrap } from "assets/export";
+import { Scrap2 } from "assets";
 import ProfileUpload from "components/profileUpload";
 import "./ScrapListPage.css";
 
@@ -51,7 +52,7 @@ const ScrapListPage: React.FC = () => {
         className="scr-calen scr-clickable"
         onClick={handleCalendarClick}
       />
-      <MainScrap className="scr-scrap" />
+      <Scrap2 className="scrap2" />
       <div className="profile-upload">
         <ProfileUpload />
       </div>
@@ -60,7 +61,10 @@ const ScrapListPage: React.FC = () => {
           <button className="cal-logout-button" onClick={() => navigate("/")}>
             Log Out
           </button>
-          <button className="cal-home-button" onClick={() => navigate("/main")}>
+          <button
+            className="cal-home-button"
+            onClick={() => navigate("/main/main_3")}
+          >
             Home
           </button>
         </div>

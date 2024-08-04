@@ -1,0 +1,35 @@
+/* ArticleList.css */
+
+.articleList {
+  display: flex;
+  flex-direction: column;
+}
+
+.articleItem {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #ddd;
+  padding: 10px;
+}
+
+.articleImage {
+  width: 100px;
+  height: 75px;
+  object-fit: cover;
+  margin-right: 15px;
+}
+
+.articleDetails {
+  display: flex;
+  flex-direction: column;
+}
+
+.articleTitle {
+  font-size: 16px;
+  margin: 0;
+}
+
+.articleDate {
+  font-size: 14px;
+  color: #555;
+}

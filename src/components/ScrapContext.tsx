@@ -10,7 +10,8 @@ interface ScrapContextType {
   addScrap: (folder: string, news: string) => void;
   createFolder: (folder: string) => void;
   deleteFolder: (folder: string) => void;
-  updateScrapOrder: (folder: string, items: string[]) => void; // Added method for reordering
+  renameFolder: (oldName: string, newName: string) => void; // 추가한 부분
+  updateScrapOrder: (folder: string, items: string[]) => void;
 }
 
 const ScrapContext = createContext<ScrapContextType | undefined>(undefined);
@@ -26,25 +27,34 @@ export const ScrapProvider: React.FC<{ children: ReactNode }> = ({
       if (!newScraps[folder]) {
         newScraps[folder] = { createdDate: new Date(), items: [] };
       }
-      newScraps[folder].items.push(news);
+      newScraps[folder].items = [...newScraps[folder].items, news];
       return newScraps;
     });
   };
 
   const createFolder = (folder: string) => {
-    setScraps((prevScraps) => {
-      const newScraps = { ...prevScraps };
-      if (!newScraps[folder]) {
-        newScraps[folder] = { createdDate: new Date(), items: [] };
-      }
-      return newScraps;
-    });
+    setScraps((prevScraps) => ({
+      ...prevScraps,
+      [folder]: { createdDate: new Date(), items: [] },
+    }));
   };
 
   const deleteFolder = (folder: string) => {
     setScraps((prevScraps) => {
       const newScraps = { ...prevScraps };
       delete newScraps[folder];
+      return newScraps;
+    });
+  };
+
+  const renameFolder = (oldName: string, newName: string) => {
+    // 추가한 부분
+    setScraps((prevScraps) => {
+      const newScraps = { ...prevScraps };
+      if (newScraps[oldName]) {
+        newScraps[newName] = newScraps[oldName];
+        delete newScraps[oldName];
+      }
       return newScraps;
     });
   };
@@ -61,7 +71,14 @@ export const ScrapProvider: React.FC<{ children: ReactNode }> = ({
 
   return (
     <ScrapContext.Provider
-      value={{ scraps, addScrap, createFolder, deleteFolder, updateScrapOrder }}
+      value={{
+        scraps,
+        addScrap,
+        createFolder,
+        deleteFolder,
+        renameFolder,
+        updateScrapOrder,
+      }}
     >
       {children}
     </ScrapContext.Provider>
@@ -70,7 +87,7 @@ export const ScrapProvider: React.FC<{ children: ReactNode }> = ({
 
 export const useScrap = () => {
   const context = useContext(ScrapContext);
-  if (context === undefined) {
+  if (!context) {
     throw new Error("useScrap must be used within a ScrapProvider");
   }
   return context;

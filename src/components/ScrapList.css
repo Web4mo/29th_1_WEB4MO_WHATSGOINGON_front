@@ -11,13 +11,17 @@
 }
 .sortSwitch {
   display: flex;
-  gap: 10px; /* Add space between buttons */
+  gap: 0px; /* Add space between buttons */
+  position: relative;
 }
 
 .sortButton {
-  padding: 8px 16px; /* Reduce button size */
-  border: 1px solid #ccc; /* Light gray border */
-  background: #f0f0f0; /* Light gray background */
+  margin-top: 18px;
+  margin-left: 8px;
+  padding: 7px 16px; /* Reduce button size */
+  border: 0px solid #ccc; /* Light gray border */
+  background: #cfcfcf;
+  /* Light gray background */
   color: #333; /* Dark gray text */
   cursor: pointer;
   border-radius: 4px; /* Rounded corners */
@@ -25,14 +29,10 @@
 }
 
 .sortButton.active {
-  background: #333; /* Dark gray background for active button */
-  color: #fff; /* White text for active button */
-  border-color: #333; /* Dark gray border for active button */
+  background: #f0f0f0; /* Dark gray background for active button */
+  color: #333; /* White text for active button */
 }
 
-.sortButton:not(.active):hover {
-  background: #d0d0d0; /* Slightly darker gray for hover on inactive buttons */
-}
 .scrap-list {
   margin-left: 450px;
 }

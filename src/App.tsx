@@ -1,4 +1,5 @@
 import React from "react";
+import axios from "axios";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import StartPage from "pages/StartPage/StartPage";
 import Login from "pages/RegisterPage/LoginPage";
@@ -18,6 +19,7 @@ import Q_3 from "./components/q_2/q_3";
 import CAL from "./components/cal/calendar";
 import MAIN_4 from "./components/main/main_4";
 import MAIN_3 from "./components/main/main_3";
+import MAIN_3_EDIT from "./components/main/main_3_edit";
 import MAIN_2 from "./components/main/main_2";
 import TestResult from "./components/q_2/test_result";
 import ResultPage1 from "pages/Propensity_analysis/ResultPage1";
@@ -31,6 +33,7 @@ import ResultPage8 from "pages/Propensity_analysis/ResultPage8";
 import PropensityAnalysis from "pages/Propensity_analysis/Propensity_analysis";
 import Profile from "pages/My_page/Profile";
 import ReadArticle from "pages/Article/Article";
+import ScrapFilePage from "pages/ScrapPage/ScrapFilePage";
 
 function App() {
   return (
@@ -40,7 +43,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/scrap" element={<ScrapPage />} />
-        <Route path="/scrap/:folder" element={<ScrapPage />} />
+        <Route path="/scraplist/:folder" element={<ScrapFilePage />} />
         <Route path="/scraplist" element={<ScrapListPage />} />
         <Route path="/q_1/q_1" element={<Q_1 />} />
         <Route path="/q_2/q_2_0" element={<Q_2_0 />} />
@@ -56,6 +59,7 @@ function App() {
         <Route path="/q_2/test_result" element={<TestResult />} />
         <Route path="/main/main_4" element={<MAIN_4 />} />
         <Route path="/main/main_3" element={<MAIN_3 />} />
+        <Route path="/main/main_3_edit" element={<MAIN_3_EDIT />} />
         <Route path="/main/main_2" element={<MAIN_2 />} />
         <Route path="/analy" element={<PropensityAnalysis />}></Route>
         <Route path="/analy/resultpage1" element={<ResultPage1 />}></Route>
@@ -67,7 +71,7 @@ function App() {
         <Route path="/analy/resultpage7" element={<ResultPage7 />}></Route>
         <Route path="/analy/resultpage8" element={<ResultPage8 />}></Route>
         <Route path="/mypage/profile" element={<Profile />}></Route>
-        <Route path="/articles" element={<ReadArticle />}></Route>
+        <Route path="/articles/:articleId" element={<ReadArticle />}></Route>
       </Routes>
     </BrowserRouter>
   );

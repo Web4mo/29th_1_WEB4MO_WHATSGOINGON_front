@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Modal from "react-modal";
 import { Line } from "assets";
+import axios from "axios";
 
 const customStyles = {
   content: {
@@ -14,6 +15,27 @@ interface PasswordResetModalProps {
   isOpen: boolean;
   onRequestClose: () => void;
 }
+const updatePassword = async (
+  existingPassword: string,
+  password: string,
+  password2: string
+) => {
+  try {
+    const response = await axios.patch("/mypage/profile/edit", {
+      existingPassword,
+      password,
+      password2,
+    });
+
+    if (response.status === 200) {
+      console.log("Profile updated successfully:", response.data);
+    } else {
+      console.error("Failed to update profile:", response.data.message);
+    }
+  } catch (error) {
+    console.error("Error occurred while updating the profile:", error);
+  }
+};
 
 const PasswordResetModal: React.FC<PasswordResetModalProps> = ({
   isOpen,
@@ -25,21 +47,37 @@ const PasswordResetModal: React.FC<PasswordResetModalProps> = ({
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
-  const validatePassword = (password: string) => {
-    const regex =
-      /^(?=.*[a-zA-Z])(?=.*\d|.*[@$!%*?&])[A-Za-z\d@$!%*?&]{10,16}$/;
-    return regex.test(password);
-  };
+  useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+        const response = await axios.get("/mypage/profile");
+        if (response.status === 200 && response.data.success) {
+          setOldPassword(response.data.password);
+        } else {
+          console.error("Failed", response.data.message);
+        }
+      } catch (error) {
+        console.error("Eror occurred while fetching user data:", error);
+      }
+    };
+
+    fetchUserData();
+  }, []);
+  // const validatePassword = (password: string) => {
+  //   const regex =
+  //     /^(?=.*[a-zA-Z])(?=.*\d|.*[@$!%*?&])[A-Za-z\d@$!%*?&]{10,16}$/;
+  //   return regex.test(password);
+  // };
 
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
 
-    if (!validatePassword(newPassword)) {
-      setErrorMessage(
-        "영문 대소문자, 숫자, 특수문자 중 2가지 이상 조합으로 10자에서 16자 사이로 입력해주세요."
-      );
-      return;
-    }
+    // if (!validatePassword(newPassword)) {
+    //   setErrorMessage(
+    //     "영문 대소문자, 숫자, 특수문자 중 2가지 이상 조합으로 10자에서 16자 사이로 입력해주세요."
+    //   );
+    //   return;
+    // }
 
     if (newPassword !== confirmPassword) {
       setErrorMessage("새 비밀번호와 일치하지 않습니다.");
@@ -47,6 +85,7 @@ const PasswordResetModal: React.FC<PasswordResetModalProps> = ({
     }
 
     setErrorMessage(""); // 유효성 검사에 통과 시 에러 메시지를 초기화
+    updatePassword(oldPassword, newPassword, confirmPassword);
     onRequestClose(); // 유효성 검사가 성공 시 모달 close
   };
 

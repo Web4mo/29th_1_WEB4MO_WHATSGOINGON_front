@@ -84,35 +84,57 @@ const interestsTopics = [
 ];
 
 const dummyUserData = {
-  name: "강해린",
-  id: "Babycattttt00",
-  userType: "자유로운 영혼의 도파민형",
-  assignDate: "2024-04-21",
-  interests: ["사회", "연예"],
-  keywords: ["교육", "건강정보", "뮤직"],
-  media: ["세계일보", "한겨레", "워싱턴포스트"],
-  profileImg: "프로필 이미지 url",
-  password: "existing password",
+  name: "김솔룩",
+  id: "solux",
+  userType: "호기심왕 도파민형",
+  assignDate: "2024-08-04",
+  interests: ["정치", "사회", "경제", "스포츠"],
+  keywords: ["국방", "교육 ", "환경", "부동산", "축구", "야구"],
+  media: ["서울신문", "한겨레", "한국일보"],
+  profileImg:
+    "https://i.namu.wiki/i/U_Z88LvTS9NYuuKFRvLXJ0xa0h4h7sARaA-lP-FaPYWHophKDSUTGWtjGNtv198ixmw_SPx2MYb8EqN9upOm3rYdKXvdk24bP3FHi3TfAHdYLOdmpQGyYF5EYn4uYQFxC0n4BFKiB5dVzs0nqHlL3g.webp",
+  password: "password",
 };
 
 const dummyHeadlines = [
-  { articleId: 1, title: "예시 기사 제목1" },
-  { articleId: 2, title: "예시 기사 제목2" },
-  { articleId: 3, title: "예시 기사 제목3" },
-  { articleId: 4, title: "예시 기사 제목4" },
-  { articleId: 5, title: "예시 기사 제목5" },
+  {
+    articleId: 1,
+    title: "오늘도 먹었는데? 아침에 절대 먹지 말아야 할 음식 10",
+    url: "/article/1",
+  },
+  {
+    articleId: 2,
+    title: "양산 최고 기온 경신... 내일 영서·충청 곳곳 소나기",
+    url: "/article/2",
+  },
+  {
+    articleId: 3,
+    title: "주말엔 간편하게 빵이지~ ‘이것’ 바르면 맛·건강 다 잡는다",
+    url: "/article/3",
+  },
+  {
+    articleId: 4,
+    title: "하다하다 장학금 신청으로 속인다…",
+    url: "/article/4",
+  },
+  {
+    articleId: 5,
+    title: "카카오, '정신아 주도' 쇄신TF 해체…",
+    url: "/article/5",
+  },
 ];
 
 const dummyMainNews = {
-  articleId: 1,
-  title: "예시 기사 제목",
+  articleId: 2,
+  title: "[단독] 돌아오지 않는 의대생, 수업 참여 2.6%뿐…2곳은 1명만 복귀",
+  url: "/article/2",
   previewImg:
-    "https://i.namu.wiki/i/U_Z88LvTS9NYuuKFRvLXJ0xa0h4h7sARaA-lP-FaPYWHophKDSUTGWtjGNtv198ixmw_SPx2MYb8EqN9upOm3rYdKXvdk24bP3FHi3TfAHdYLOdmpQGyYF5EYn4uYQFxC0n4BFKiB5dVzs0nqHlL3g.webp",
-  date: "2024-06-27",
+    "https://imgnews.pstatic.net/image/025/2024/08/04/0003377624_001_20240804052650142.jpg?type=w647",
+  date: "2024-08-04",
   scrap: false,
 };
 
-const MAIN_2: React.FC = () => {
+const MAIN_3_EDIT: React.FC = () => {
   const [userData, setUserData] = useState(dummyUserData); // 사용자 데이터 상태
   const [filteredTopics, setFilteredTopics] = useState<any[]>([]); // 필터링된 토픽 상태
   const navigate = useNavigate();
@@ -266,15 +288,10 @@ const MAIN_2: React.FC = () => {
         <div className="main-table-container">
           <div className="main-table-row main-table-header">
             {renderInterestTopics()}
-            <div className="main-table-cell-3">
-              <div className="main-table-text-container">
-                <p className="main-table-text">+ 더보기</p>
-              </div>
-            </div>
           </div>
           {[...Array(3)].map((_, index) => (
-            <div className="main-table-row-3" key={index}>
-              <div className="main-table-cell-3">
+            <div className="main-table-row" key={index}>
+              <div className="main-table-cell">
                 <img
                   src={IMG}
                   alt="Example"
@@ -291,7 +308,7 @@ const MAIN_2: React.FC = () => {
                   />
                 </p>
               </div>
-              <div className="main-table-cell-3">
+              <div className="main-table-cell">
                 <img
                   src={IMG}
                   alt="Example"
@@ -308,15 +325,39 @@ const MAIN_2: React.FC = () => {
                   />
                 </p>
               </div>
-              <div className="main-table-cell-3">
-                {index === 0 ? (
-                  <button
-                    className="main-button"
-                    onClick={() => navigate("/mypage/profile")}
-                  >
-                    관심 분야 추가하러 이동하기
-                  </button>
-                ) : null}
+              <div className="main-table-cell">
+                <img
+                  src={IMG}
+                  alt="Example"
+                  className="main-fixed-size-image"
+                />
+                <p className="main-table-text">안녕하세요 기사 제목입니다.</p>
+                <p className="main-table-subtext">
+                  2024.05.06
+                  <img
+                    src={PENCIL}
+                    alt="Edit"
+                    className="main-pencil-icon"
+                    onClick={openModal}
+                  />
+                </p>
+              </div>
+              <div className="main-table-cell">
+                <img
+                  src={IMG}
+                  alt="Example"
+                  className="main-fixed-size-image"
+                />
+                <p className="main-table-text">안녕하세요 기사 제목입니다.</p>
+                <p className="main-table-subtext">
+                  2024.05.06
+                  <img
+                    src={PENCIL}
+                    alt="Edit"
+                    className="main-pencil-icon"
+                    onClick={openModal}
+                  />
+                </p>
               </div>
             </div>
           ))}
@@ -336,4 +377,4 @@ const MAIN_2: React.FC = () => {
   );
 };
 
-export default MAIN_2;
+export default MAIN_3_EDIT;
