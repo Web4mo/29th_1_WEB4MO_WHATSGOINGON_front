@@ -6,6 +6,7 @@
 }
 .back {
   background-color: #d8d8d8;
+  padding: none;
 }
 .rec {
   height: 100vh;
@@ -13,24 +14,25 @@
   margin-top: -65pt;
 }
 .info {
-  margin-left: -250pt;
-  margin-bottom: 200pt;
+  margin-left: -235pt;
+  margin-bottom: 150pt;
   width: 280pt;
 }
 .topdiv {
+  position: absolute;
   margin-left: 80vw;
   margin-top: 15pt;
   display: flex;
   width: 250pt;
 }
 .calen {
-  margin-left: -292pt;
-  margin-bottom: 140pt;
+  margin-left: -330pt;
+  margin-bottom: 90pt;
   width: 230pt;
 }
 .scrap {
   margin-left: -230pt;
-  margin-bottom: 80pt;
+  margin-bottom: 25pt;
   width: 230pt;
 }
 .rete {

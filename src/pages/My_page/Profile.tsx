@@ -88,12 +88,12 @@ function Profile(): JSX.Element {
   };
 
   return (
-    <div className="back">
+    <div>
       <div className="topdiv">
         <Logout />
         <Home onClick={handleHomeClick} />
       </div>
-      <Rectangle className="rec" />
+      <Rectangle className="scr-rec" />
       <Info className="info" />
       <Calendar className="calen clickable" onClick={handleCalendarClick} />
       <Scrap className="scrap clickable" onClick={handleScrapClick} />

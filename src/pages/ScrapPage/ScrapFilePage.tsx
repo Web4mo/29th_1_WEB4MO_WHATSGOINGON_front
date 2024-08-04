@@ -2,8 +2,7 @@ import React from "react";
 import ScrapList2 from "components/ScrapList2";
 import { useNavigate } from "react-router-dom";
 import { Rectangle } from "assets";
-import { SubInfo, Calendar } from "assets";
-import { MainScrap } from "assets/export";
+import { SubInfo, Calendar, Scrap2 } from "assets";
 import ProfileUpload from "components/profileUpload";
 import "./ScrapListPage.css";
 
@@ -26,7 +25,7 @@ const ScrapFilePage: React.FC = () => {
         className="scr-calen scr-clickable"
         onClick={handleCalendarClick}
       />
-      <MainScrap className="scr-scrap" />
+      <Scrap2 className="scrap2" />
       <div className="profile-upload">
         <ProfileUpload />
       </div>

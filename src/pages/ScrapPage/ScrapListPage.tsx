@@ -6,7 +6,6 @@ import FolderAdd from "components/scrapPoppup/ScrapFolderAdd";
 import { ScrapFolderAdd5 } from "assets/export";
 import { Rectangle } from "assets";
 import { SubInfo, Calendar } from "assets";
-import { MainScrap } from "assets/export";
 import { Scrap2 } from "assets";
 import ProfileUpload from "components/profileUpload";
 import "./ScrapListPage.css";

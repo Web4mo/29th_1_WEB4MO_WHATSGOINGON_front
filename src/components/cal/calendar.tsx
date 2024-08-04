@@ -8,6 +8,7 @@ import ProfileUpload from "components/profileUpload";
 import EditInfo from "components/editInfo";
 import { Rectangle } from "assets";
 import { SubInfo, MainCal, Scrap } from "assets";
+import "../../pages/ScrapPage/ScrapListPage.css";
 
 const CAL: React.FC = () => {
   const navigate = useNavigate();
@@ -163,7 +164,7 @@ const CAL: React.FC = () => {
   return (
     <div className="cal-back">
       <ProfileUpload />
-      <Rectangle className="cal-rec" />
+      <Rectangle className="scr-rec" />
       <SubInfo className="cal-info cal-clickable" onClick={handleInfoClick} />
       <MainCal className="cal-calen" />
       <Scrap className="cal-scrap cal-clickable" onClick={handleScrapClick} />

@@ -287,19 +287,45 @@ const MAIN_3: React.FC = () => {
         </div>
         <div className="main-table-container">
           <div className="main-table-row main-table-header">
-            {renderInterestTopics()}
+            <div className="main-table-cell-3">
+              <div className="main-table-text-container">
+                <img
+                  src={Q13}
+                  alt="아이티과학"
+                  className="main-question-icon"
+                />
+                <p className="main-table-text">IT/Science +</p>
+              </div>
+            </div>
+            <div className="main-table-cell-3">
+              <div className="main-table-text-container">
+                <img src={Q10} alt="정치" className="main-question-icon" />
+                <p className="main-table-text">Politics +</p>
+              </div>
+            </div>
+            <div className="main-table-cell-3">
+              <div className="main-table-text-container">
+                <img src={Q16} alt="스포츠" className="main-question-icon" />
+                <p className="main-table-text">Sports +</p>
+              </div>
+            </div>
           </div>
-          {[...Array(3)].map((_, index) => (
+          {[...Array(1)].map((_, index) => (
             <div className="main-table-row-3" key={index}>
               <div className="main-table-cell-3">
                 <img
-                  src={IMG}
+                  src={
+                    "https://mimgnews.pstatic.net/image/origin/421/2024/08/01/7701932.jpg?type=nf220_150"
+                  }
                   alt="Example"
                   className="main-fixed-size-image"
                 />
-                <p className="main-table-text">안녕하세요 기사 제목입니다.</p>
+                <p className="main-table-text">
+                  UNIST AI, 개인정보 침해 '연합학습'으로 예방 IT·의료에 중요
+                  역할
+                </p>
                 <p className="main-table-subtext">
-                  2024.05.06
+                  2024.08.01
                   <img
                     src={PENCIL}
                     alt="Edit"
@@ -310,13 +336,21 @@ const MAIN_3: React.FC = () => {
               </div>
               <div className="main-table-cell-3">
                 <img
-                  src={IMG}
+                  src={
+                    "https://mimgnews.pstatic.net/image/origin/003/2024/08/04/12707823.jpg?type=nf220_150"
+                  }
                   alt="Example"
                   className="main-fixed-size-image"
+                  onClick={() => handleHeadlineClick(dummyMainNews.articleId)}
                 />
-                <p className="main-table-text">안녕하세요 기사 제목입니다.</p>
+                <p
+                  className="main-table-text"
+                  onClick={() => handleHeadlineClick(dummyMainNews.articleId)}
+                >
+                  우크라이나, 크름반도 배치 러시아 킬로급 잠수함 격침
+                </p>
                 <p className="main-table-subtext">
-                  2024.05.06
+                  2024.08.04
                   <img
                     src={PENCIL}
                     alt="Edit"
@@ -327,13 +361,85 @@ const MAIN_3: React.FC = () => {
               </div>
               <div className="main-table-cell-3">
                 <img
-                  src={IMG}
+                  src={
+                    "https://mimgnews.pstatic.net/image/origin/023/2024/08/03/3850268.jpg?type=nf220_150"
+                  }
                   alt="Example"
                   className="main-fixed-size-image"
                 />
-                <p className="main-table-text">안녕하세요 기사 제목입니다.</p>
+                <p className="main-table-text">
+                  가장 늙은 나라에서, 가장 젊은 스포츠 석권
+                </p>
                 <p className="main-table-subtext">
-                  2024.05.06
+                  2024.08.03
+                  <img
+                    src={PENCIL}
+                    alt="Edit"
+                    className="main-pencil-icon"
+                    onClick={openModal}
+                  />
+                </p>
+              </div>
+            </div>
+          ))}
+          {[...Array(1)].map((_, index) => (
+            <div className="main-table-row-3" key={index}>
+              <div className="main-table-cell-3">
+                <img
+                  src={
+                    "https://mimgnews.pstatic.net/image/origin/092/2024/07/30/2340261.jpg?type=nf220_150"
+                  }
+                  alt="Example"
+                  className="main-fixed-size-image"
+                />
+                <p className="main-table-text">
+                  틸론 국방 혁신 기여···제8회 국방 과학 기술 대제전 참가
+                </p>
+                <p className="main-table-subtext">
+                  2024.07.30
+                  <img
+                    src={PENCIL}
+                    alt="Edit"
+                    className="main-pencil-icon"
+                    onClick={openModal}
+                  />
+                </p>
+              </div>
+              <div className="main-table-cell-3">
+                <img
+                  src={
+                    "https://mimgnews.pstatic.net/image/origin/023/2024/08/04/3850374.jpg?type=nf220_150"
+                  }
+                  alt="Example"
+                  className="main-fixed-size-image"
+                />
+                <p className="main-table-text">
+                  中상륙함 사이즈 원샷원킬...美 스텔스 폭격기, 태평양 훈련 뜬
+                  까닭
+                </p>
+                <p className="main-table-subtext">
+                  2024.08.04
+                  <img
+                    src={PENCIL}
+                    alt="Edit"
+                    className="main-pencil-icon"
+                    onClick={openModal}
+                  />
+                </p>
+              </div>
+              <div className="main-table-cell-3">
+                <img
+                  src={
+                    "https://imgnews.pstatic.net/image/023/2024/08/04/0003850377_001_20240804051107852.jpg?type=w647"
+                  }
+                  alt="Example"
+                  className="main-fixed-size-image"
+                />
+                <p className="main-table-text">
+                  여자 핸드볼, 8강 진출 좌절... '우생순' 재연은 다음 기회에
+                </p>
+                <p className="main-table-subtext">
+                  2024.08.04
                   <img
                     src={PENCIL}
                     alt="Edit"
