@@ -76,7 +76,7 @@ const interestsTopics = [
   { num: "0", name: "정치", icon: Q10, eng: "Politics +" },
   { num: "1", name: "생활 문화", icon: Q11, eng: "Culture +" },
   { num: "2", name: "경제", icon: Q12, eng: "Economy +" },
-  { num: "3", name: "IT/과학", icon: Q13, eng: "IT/Science +" },
+  { num: "3", name: "IT과학", icon: Q13, eng: "IT/Science +" },
   { num: "4", name: "사회", icon: Q14, eng: "Society +" },
   { num: "5", name: "세계", icon: Q15, eng: "World +" },
   { num: "6", name: "스포츠", icon: Q16, eng: "Sports +" },
@@ -287,28 +287,7 @@ const MAIN_3: React.FC = () => {
         </div>
         <div className="main-table-container">
           <div className="main-table-row main-table-header">
-            <div className="main-table-cell-3">
-              <div className="main-table-text-container">
-                <img
-                  src={Q13}
-                  alt="아이티과학"
-                  className="main-question-icon"
-                />
-                <p className="main-table-text">IT/Science +</p>
-              </div>
-            </div>
-            <div className="main-table-cell-3">
-              <div className="main-table-text-container">
-                <img src={Q10} alt="정치" className="main-question-icon" />
-                <p className="main-table-text">Politics +</p>
-              </div>
-            </div>
-            <div className="main-table-cell-3">
-              <div className="main-table-text-container">
-                <img src={Q16} alt="스포츠" className="main-question-icon" />
-                <p className="main-table-text">Sports +</p>
-              </div>
-            </div>
+            {renderInterestTopics()}
           </div>
           {[...Array(3)].map((_, index) => (
             <div className="main-table-row-3" key={index}>
