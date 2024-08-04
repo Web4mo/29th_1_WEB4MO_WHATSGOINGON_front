@@ -164,7 +164,7 @@ const CAL: React.FC = () => {
   return (
     <div className="cal-back">
       <ProfileUpload />
-      <Rectangle className="scr-rec" />
+      <Rectangle className="cal-rec" />
       <SubInfo className="cal-info cal-clickable" onClick={handleInfoClick} />
       <MainCal className="cal-calen" />
       <Scrap className="cal-scrap cal-clickable" onClick={handleScrapClick} />
